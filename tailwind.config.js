@@ -7,8 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryColor: "#FFFFFF",
-        secondaryColor: "#000000",
+        primaryColor: "#FFFFFF", // Light mode primary color
+        secondaryColor: "#000000", // Light mode secondary color
+        darkPrimaryColor: "#181818", // Dark mode primary color
+        darkSecondaryColor: "#FFFFFF", // Dark mode secondary color
       },
       screens: {
         '2xl': '1536px',
@@ -19,5 +21,6 @@ export default {
       },
     },
   },
+  darkMode: 'class', // Enable dark mode support with the class strategy
   plugins: [],
 }

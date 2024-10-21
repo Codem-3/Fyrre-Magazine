@@ -9,7 +9,6 @@
 }
 
 body {
-    /* @apply bg-background text-primary; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,6 +21,11 @@ html {
 
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+::selection {
+    color: #ffffff;
+    background-color: #B17457;
 }
 
 /* Marquee Bar Style */
