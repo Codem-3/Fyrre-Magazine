@@ -25,7 +25,7 @@ export const HeroSection = () => {
                 </span>
             </section>
 
-            <img src={CloseEyes} alt='Not Close Eyes' />
+            <img src={CloseEyes} alt='Not Close Eyes' loading='lazy' />
         </main>
     )
 }
