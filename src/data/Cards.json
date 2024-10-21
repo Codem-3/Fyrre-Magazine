@@ -1,0 +1,49 @@
+{
+    "cards": [
+        {
+            "category": "ART",
+            "card": {
+                "image": {
+                    "src": "path_to_image1.jpg"
+                },
+                "title": "Hope dies last",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "meta": {
+                    "author": "Jakob Gronberg",
+                    "date": "16. March 2022",
+                    "readTime": "1 Min"
+                }
+            }
+        },
+        {
+            "category": "TECH",
+            "card": {
+                "image": {
+                    "src": "path_to_image2.jpg"
+                },
+                "title": "The Future of AI",
+                "description": "Artificial intelligence is rapidly transforming the world. In this article, we explore the potential future applications of AI.",
+                "meta": {
+                    "author": "Sarah Tech",
+                    "date": "25. September 2023",
+                    "readTime": "3 Min"
+                }
+            }
+        },
+        {
+            "category": "TRAVEL",
+            "card": {
+                "image": {
+                    "src": "path_to_image3.jpg"
+                },
+                "title": "Exploring the Alps",
+                "description": "A journey through the majestic Alpine landscapes, full of adventures and breathtaking views.",
+                "meta": {
+                    "author": "John Traveler",
+                    "date": "12. July 2021",
+                    "readTime": "5 Min"
+                }
+            }
+        }
+    ]
+}
