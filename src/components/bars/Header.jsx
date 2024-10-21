@@ -1,9 +1,10 @@
 import React from 'react'
+// Icons
 import { InstagramIcon, TwitterIcon, WifiIcon, YoutubeIcon } from '@/utils/icons.util'
 
 export const Header = () => {
     return (
-        <header className='mt-16 mx-20'>
+        <header className='mt-12 mx-20'>
             <main className='flex justify-between items-center mb-4'>
                 {/* Logo */}
                 <p className='uppercase text-xl font-bold'>Fyrre Magazine</p>
@@ -12,7 +13,7 @@ export const Header = () => {
                     <li>Magazine</li>
                     <li>Authors</li>
                     <li>Podcast</li>
-                    <hr className='w-4 border-black' />
+                    <hr className='w-4 border-secondaryColor' />
                     {/* Social */}
                     <span className='flex gap-3 items-center'>
                         <InstagramIcon />
@@ -23,7 +24,7 @@ export const Header = () => {
                 </ul>
             </main>
 
-            <hr className='border-black' />
+            <hr className='border-secondaryColor' />
         </header>
     )
 }
