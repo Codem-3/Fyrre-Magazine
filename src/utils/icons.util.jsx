@@ -1,3 +1,5 @@
+// fill="currentColor"
+
 export const Logo = () => (
     <svg
         width="39"
