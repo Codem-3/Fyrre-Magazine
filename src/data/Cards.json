@@ -1,49 +1,127 @@
 {
     "cards": [
         {
-            "category": "ART",
-            "card": {
-                "image": {
-                    "src": "path_to_image1.jpg"
+            "category": "Art",
+            "card": [
+                {
+                    "image": {
+                        "src": "path_to_image1.jpg"
+                    },
+                    "title": "Hope dies last",
+                    "description": "An inspiring artwork that highlights the strength of hope in the face of challenges and adversity. It reflects the human struggle and the ability to hold on to hope even in the darkest times.",
+                    "meta": {
+                        "author": "Jakob Gronberg",
+                        "date": "16. March 2022",
+                        "readTime": "1 Min"
+                    }
                 },
-                "title": "Hope dies last",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "meta": {
-                    "author": "Jakob Gronberg",
-                    "date": "16. March 2022",
-                    "readTime": "1 Min"
+                {
+                    "image": {
+                        "src": "path_to_image4.jpg"
+                    },
+                    "title": "Colors of Imagination",
+                    "description": "An abstract painting that captures the power of imagination through vibrant colors and dynamic movements. The piece evokes a sense of optimism and openness to endless possibilities.",
+                    "meta": {
+                        "author": "Emily Davis",
+                        "date": "28. August 2023",
+                        "readTime": "2 Min"
+                    }
+                },
+                {
+                    "image": {
+                        "src": "path_to_image5.jpg"
+                    },
+                    "title": "Silent Echoes",
+                    "description": "A deep exploration of silent art that conveys hidden emotions through intricate details, using shadows and light to communicate a profound message.",
+                    "meta": {
+                        "author": "Lara Zane",
+                        "date": "10. February 2021",
+                        "readTime": "4 Min"
+                    }
                 }
-            }
+            ]
         },
         {
-            "category": "TECH",
-            "card": {
-                "image": {
-                    "src": "path_to_image2.jpg"
+            "category": "Street",
+            "card": [
+                {
+                    "image": {
+                        "src": "path_to_image2.jpg"
+                    },
+                    "title": "The Future of AI",
+                    "description": "Artificial intelligence is rapidly transforming the world. In this article, we explore the potential future applications of AI across various fields.",
+                    "meta": {
+                        "author": "Sarah Tech",
+                        "date": "25. September 2023",
+                        "readTime": "3 Min"
+                    }
                 },
-                "title": "The Future of AI",
-                "description": "Artificial intelligence is rapidly transforming the world. In this article, we explore the potential future applications of AI.",
-                "meta": {
-                    "author": "Sarah Tech",
-                    "date": "25. September 2023",
-                    "readTime": "3 Min"
+                {
+                    "image": {
+                        "src": "path_to_image6.jpg"
+                    },
+                    "title": "City Lights",
+                    "description": "A stunning portrayal of city life at night, where people interact with the vibrant urban environment filled with lights and ongoing activities.",
+                    "meta": {
+                        "author": "Mark Urban",
+                        "date": "8. November 2022",
+                        "readTime": "2 Min"
+                    }
+                },
+                {
+                    "image": {
+                        "src": "path_to_image7.jpg"
+                    },
+                    "title": "Urban Harmony",
+                    "description": "An exploration of the relationships between people and the city, showcasing how diverse cultures coexist in a complex and lively urban setting.",
+                    "meta": {
+                        "author": "Anna Metropolis",
+                        "date": "15. June 2023",
+                        "readTime": "5 Min"
+                    }
                 }
-            }
+            ]
         },
         {
-            "category": "TRAVEL",
-            "card": {
-                "image": {
-                    "src": "path_to_image3.jpg"
+            "category": "Sculptures",
+            "card": [
+                {
+                    "image": {
+                        "src": "path_to_image3.jpg"
+                    },
+                    "title": "Exploring the Alps",
+                    "description": "A mesmerizing journey through the majestic Alpine landscapes, filled with adventures and breathtaking views of nature's beauty.",
+                    "meta": {
+                        "author": "John Traveler",
+                        "date": "12. July 2021",
+                        "readTime": "5 Min"
+                    }
                 },
-                "title": "Exploring the Alps",
-                "description": "A journey through the majestic Alpine landscapes, full of adventures and breathtaking views.",
-                "meta": {
-                    "author": "John Traveler",
-                    "date": "12. July 2021",
-                    "readTime": "5 Min"
+                {
+                    "image": {
+                        "src": "path_to_image8.jpg"
+                    },
+                    "title": "The Art of Stone",
+                    "description": "A timeless exploration of stone sculpture, combining the natural beauty of stone textures with intricate details showcasing human craftsmanship.",
+                    "meta": {
+                        "author": "Sophia Stone",
+                        "date": "9. October 2020",
+                        "readTime": "4 Min"
+                    }
+                },
+                {
+                    "image": {
+                        "src": "path_to_image9.jpg"
+                    },
+                    "title": "Monumental Visions",
+                    "description": "Large-scale sculptures that transcend traditional sizes to create an immersive experience, blending architectural art with abstraction.",
+                    "meta": {
+                        "author": "Tom Hardy",
+                        "date": "22. January 2022",
+                        "readTime": "6 Min"
+                    }
                 }
-            }
+            ]
         }
     ]
 }

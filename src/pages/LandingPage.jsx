@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Header, Footer } from '../components'
 
 export const LandingPage = () => {
     return (
-        <div>LandingPage</div>
+        <Fragment>
+            <Header />
+            LandingPage
+            <Footer />
+        </Fragment>
     )
 }
