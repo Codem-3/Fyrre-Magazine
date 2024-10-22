@@ -7,7 +7,7 @@ export const Header = (props) => {
         <header className='mt-12 mx-20 dark:bg-darkPrimaryColor dark:text-darkSecondaryColor'>
             <main className='flex justify-between items-center mb-4'>
                 {/* Logo */}
-                <p className='uppercase text-xl font-bold'>Fyrre Magazine</p>
+                <p className='uppercase text-2xl font-bold'>Fyrre Magazine</p>
                 {/* Navigation */}
                 <ul className='flex gap-6 items-center text-xl'>
                     <li>{props.FirstNav}</li>
