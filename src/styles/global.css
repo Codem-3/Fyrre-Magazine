@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    /* outline: 1px solid red; */
-}
-
 body {
     margin: 0;
     padding: 0;
