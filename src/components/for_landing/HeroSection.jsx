@@ -3,15 +3,19 @@ import React from 'react'
 import { BreakNews } from '@/components'
 // Images
 import CloseEyes from '@/assets/images/for_landing/closeEyes.jfif'
+// Icons
+import { TitleIcon } from '@/utils/icons.util'
 
 export const HeroSection = () => {
     return (
         <main className='mx-20'>
-            <p className='uppercase text-center text-[15vw] font-black'>art & life</p>
+            <div className='w-full flex justify-center my-12'>
+                <TitleIcon />
+            </div>
             <BreakNews />
 
             <section className='flex justify-between my-10'>
-                <p className='text-8xl font-semibold uppercase min-w-[700px]'>Don’t close your eyes</p>
+                <p className='text-8xl font-semibold uppercase min-w-[700px]'>Don't close your eyes</p>
                 <span className='flex flex-col justify-between'>
                     <p className='text-lg text-justify'>Reflects on the fleeting moments of life and the importance of cherishing each experience, especially in relationships. The song conveys a sense of urgency, urging listeners to stay present and fully engage with their loved ones.</p>
                     <div className='flex justify-between items-center'>
