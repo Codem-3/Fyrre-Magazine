@@ -11,6 +11,10 @@ body {
     font-family: "DM Sans", sans-serif;
 }
 
+* {
+    /* outline: 1px solid firebrick; */
+}
+
 html {
     scroll-behavior: smooth;
 }

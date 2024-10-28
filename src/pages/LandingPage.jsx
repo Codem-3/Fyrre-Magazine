@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Header, Footer, HeroSection, MagazineCard, PrintMagazine } from '@/components'
+import { Header, Footer, HeroSection, MagazineCard, PrintMagazine, AuthorsCard, PodcastCard } from '@/components'
 
 export const LandingPage = () => {
     return (
@@ -10,6 +10,8 @@ export const LandingPage = () => {
                 <MagazineCard />
                 <PrintMagazine />
             </span>
+            <PodcastCard />
+            <AuthorsCard />
             <Footer />
         </Fragment>
     )
