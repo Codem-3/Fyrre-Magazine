@@ -1,9 +1,8 @@
 import React from 'react'
 // Icons
-import { RightArrowIcon } from '@/utils/icons.util';
+import { RightArrowIcon, ArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Podcast.json'
-import { ArrowIcon } from '../../utils/icons.util';
 
 export const PodcastCard = () => {
     return (
@@ -50,9 +49,8 @@ export const PodcastCard = () => {
                     </section>
                 ))
                 }
-            </div >
+            </div>
 
-
-        </main >
+        </main>
     )
 }
