@@ -44,10 +44,18 @@ export const Footer = () => {
             <section className='flex justify-between items-center mb-6 mx-20'>
                 <p className='text-sm'>© code by Mohamed Mohamed -  Designed by WebFlow</p>
                 <span className='flex gap-3 items-center'>
-                    <InstagramIcon />
-                    <TwitterIcon />
-                    <YoutubeIcon />
-                    <WifiIcon />
+                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
+                        <InstagramIcon />
+                    </span>
+                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
+                        <TwitterIcon />
+                    </span>
+                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
+                        <YoutubeIcon />
+                    </span>
+                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
+                        <WifiIcon />
+                    </span>
                 </span>
             </section>
         </footer>

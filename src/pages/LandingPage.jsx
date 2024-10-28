@@ -4,7 +4,9 @@ import { Header, Footer, HeroSection, MagazineCard, PrintMagazine, AuthorsCard, 
 export const LandingPage = () => {
     return (
         <Fragment>
-            <Header FirstNav='Magazine' SecondNav='Authors' ThirdNav='Podcast' />
+            <Header
+                FirstNav='Magazine' FirstNavLink='/magazine' SecondNav='Authors' SecondNavLink='/authors' ThirdNav='Podcast' ThirdNavLink='/podcast'
+            />
             <HeroSection />
             <span className='flex justify-between gap-20 mx-20 my-12'>
                 <MagazineCard />
