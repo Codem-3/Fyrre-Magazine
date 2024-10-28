@@ -1,6 +1,6 @@
 import React from 'react'
 // Database
-import data from '@/data/Cards.json'
+import data from '@/data/Magazine.json'
 // Icons
 import { RightArrowIcon } from '@/utils/icons.util'
 

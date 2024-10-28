@@ -1,0 +1,44 @@
+{
+    "podcasts": [
+        {
+            "title": "The Problem of today’s cultural development",
+            "episode": "EP 05",
+            "date": "16 March 2022",
+            "duration": "1hr 20min",
+            "image": "../assets/images/podcast/podcast-cover1.png",
+            "action": "LISTEN"
+        },
+        {
+            "title": "The hidden messages of Jack Nielson",
+            "episode": "EP 04",
+            "date": "17 March 2012",
+            "duration": "2hr 10min",
+            "image": "../assets/images/podcast/podcast-cover2.png",
+            "action": "LISTEN"
+        },
+        {
+            "title": "Behind the scenes of the street art culture",
+            "episode": "EP 03",
+            "date": "1 May 2020",
+            "duration": "1hr 40min",
+            "image": "../assets/images/podcast/podcast-cover3.png",
+            "action": "LISTEN"
+        },
+        {
+            "title": "The art of movement",
+            "episode": "EP 02",
+            "date": "16 March 2022",
+            "duration": "1hr 20min",
+            "image": "../assets/images/podcast/podcast-cover4.png",
+            "action": "LISTEN"
+        },
+        {
+            "title": "10 artists you should know",
+            "episode": "EP 01",
+            "date": "16 March 2022",
+            "duration": "1hr 20min",
+            "image": "../assets/images/podcast/podcast-cover5.png",
+            "action": "LISTEN"
+        }
+    ]
+}
