@@ -24,7 +24,7 @@ export const HeroSection = () => {
                             <p><span className='font-bold'>Date</span> 16. March 2022</p>
                             <p><span className='font-bold'>Duration</span> 1 Min</p>
                         </span>
-                        <button className='uppercase px-3 py-2 border border-black rounded-full text-xs'>Label</button>
+                        <button className='uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300'>Label</button>
                     </div>
                 </span>
             </section>

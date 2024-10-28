@@ -3,6 +3,7 @@ import React from 'react'
 import { RightArrowIcon, ArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Podcast.json'
+import { Link } from 'react-router-dom';
 
 export const PodcastCard = () => {
     return (
@@ -11,10 +12,10 @@ export const PodcastCard = () => {
             {/* Header*/}
             <header className='flex justify-between items-center mt-12 mb-16'>
                 <p className='text-7xl font-bold uppercase'>Podcast</p>
-                <span className='flex gap-2'>
+                <Link to='/podcast' className='flex gap-2 transition-all hover:text-[#B17457] duration-300'>
                     <p className='uppercase font-bold'>All Episodes</p>
                     <RightArrowIcon />
-                </span>
+                </Link>
             </header>
 
             {/* Podcast Data Card */}

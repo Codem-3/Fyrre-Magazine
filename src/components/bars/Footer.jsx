@@ -13,7 +13,7 @@ export const Footer = () => {
             <section className='flex justify-between items-center uppercase my-28 mx-20'>
                 <p className='text-7xl font-semibold max-w-screen-sm leading-[110%]'>Design News to your inbox</p>
                 <span className='flex gap-3'>
-                    <input placeholder='example@mail.com' className='px-4 py-2 text-secondaryColor w-80' />
+                    <input placeholder='example@mail.com' className='px-4 py-2 text-secondaryColor w-80' defaultValue='mohamed.m.abdalfattah@gmail.com' />
                     <button className='uppercase px-6 py-1 bg-primaryColor text-secondaryColor font-medium'>Sign Up</button>
                 </span>
             </section>

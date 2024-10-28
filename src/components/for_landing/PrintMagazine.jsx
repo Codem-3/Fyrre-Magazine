@@ -7,7 +7,7 @@ export const PrintMagazine = () => {
             <p className='uppercase font-semibold mb-2'>PrintMagazine</p>
             <p className='font-semibold text-5xl mb-8'>03/2022</p>
             <img src={CoverMagazine} alt='Cover Magazine' className='min-w-64 mb-4' />
-            <button className='bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-6 py-4'>Button</button>
+            <button className='bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-6 py-4 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300'>Buy</button>
 
             {/* Most Popular */}
             <section className='my-12'>
@@ -46,7 +46,7 @@ export const PrintMagazine = () => {
                 <p className='text-2xl font-bold mb-4'>Design News to your inbox</p>
                 <input placeholder='example@gmail.com' className='px-2 py-2 w-full mb-3' />
                 <div className='flex justify-end'>
-                    <button className='bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-5 py-3'>Sign up</button>
+                    <button className='bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-5 py-3 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300'>Sign up</button>
                 </div>
             </section>
 

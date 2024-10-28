@@ -3,6 +3,7 @@ import React from 'react'
 import data from '@/data/Magazine.json'
 // Icons
 import { RightArrowIcon } from '@/utils/icons.util'
+import { Link } from 'react-router-dom'
 
 export const MagazineCard = () => {
     return (
@@ -31,7 +32,7 @@ export const MagazineCard = () => {
                                                 <p><span className='font-bold'>Date</span> {cardItem.meta.date}</p>
                                                 <p><span className='font-bold'>Read</span> {cardItem.meta.readTime}</p>
                                             </span>
-                                            <button className='uppercase px-3 py-2 border border-black rounded-full text-xs'>{categoryItem.category}</button>
+                                            <button className='uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300'>{categoryItem.category}</button>
                                         </div>
                                     </span>
                                 </div>
@@ -47,10 +48,10 @@ export const MagazineCard = () => {
             ))}
 
             {/* ALl Articles Button */}
-            <span className='flex gap-2'>
+            <Link to='/magazine' className='flex gap-2 transition-all hover:text-[#B17457] duration-300'>
                 <p className='uppercase font-bold'>All articles</p>
                 <RightArrowIcon />
-            </span>
+            </Link>
 
         </main>
     )

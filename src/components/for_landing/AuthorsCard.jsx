@@ -3,18 +3,19 @@ import React from 'react'
 import { RightArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Authors.json'
+import { Link } from 'react-router-dom';
 
 export const AuthorsCard = () => {
     return (
-        <main className='my-28 mx-20 border-t border-secondaryColor'>
+        <main className='my-10 mx-20 border-t border-secondaryColor'>
 
             {/* Header*/}
             <header className='flex justify-between items-center mt-12 mb-16'>
                 <p className='text-7xl font-bold uppercase'>Authors</p>
-                <span className='flex gap-2'>
+                <Link to='/authors' className='flex gap-2 transition-all hover:text-[#B17457] duration-300'>
                     <p className='uppercase font-bold'>All Authors</p>
                     <RightArrowIcon />
-                </span>
+                </Link>
             </header>
 
             {/* Authors Data Card */}
