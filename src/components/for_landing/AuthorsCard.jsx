@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 // Icons
 import { RightArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Authors.json'
-import { Link } from 'react-router-dom';
 
 export const AuthorsCard = () => {
     return (
@@ -20,28 +20,26 @@ export const AuthorsCard = () => {
 
             {/* Authors Data Card */}
             <div className='flex flex-wrap justify-between'>
-                {data.profiles.slice(0, 4).map((podcast, index) => (
+                {data.profiles.slice(0, 4).map((authors, index) => (
                     <section key={index} className='p-7'>
-                        <div div className="flex-col items-center text-center" >
-                            <div className="relative w-64 h-64  mb-5">
-                                <img
-                                    src={podcast.image}
-                                    alt={podcast.title}
-                                    className="w-full h-full object-center object-cover rounded-full shadow-xl"
-                                />
-                            </div>
-                            <span className='flex flex-col justify-between items-center py-5'>
-                                {/* Authors Title & Description */}
-                                <p className="font-bold text-4xl max-w-96 mb-8">{podcast.name}</p>
-                                {/* Authors Details */}
-                                <div className='flex justify-between items-center'>
-                                    <span className='flex text-sm gap-6'>
-                                        <p><span className='font-bold text-lg'>Job</span> {podcast.job}</p>
-                                        <p><span className='font-bold text-lg'>City</span> {podcast.city}</p>
-                                    </span>
-                                </div>
-                            </span>
+                        <div className="relative w-64 h-64 mb-5">
+                            <img
+                                src={authors.image}
+                                alt={authors.title}
+                                className="w-full h-full object-center object-cover rounded-full shadow-xl"
+                            />
                         </div>
+                        <span className='flex flex-col justify-between items-center py-5'>
+                            {/* Authors Title & Description */}
+                            <p className="font-bold text-4xl max-w-96 mb-8">{authors.name}</p>
+                            {/* Authors Details */}
+                            <div className='flex justify-between items-center'>
+                                <span className='flex text-sm gap-6'>
+                                    <p><span className='font-bold text-lg'>Job</span> {authors.job}</p>
+                                    <p><span className='font-bold text-lg'>City</span> {authors.city}</p>
+                                </span>
+                            </div>
+                        </span>
                     </section>
                 ))
                 }
