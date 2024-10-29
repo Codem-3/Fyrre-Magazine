@@ -10,7 +10,11 @@ import data from '@/data/Authors.json'
 export const AuthorsPage = () => {
     return (
         <Fragment>
-            <Header FirstNav='Home' FirstNavLink='/' SecondNav='Magazine' SecondNavLink='/magazine' ThirdNav='Podcast' ThirdNavLink='/podcast' />
+            <Header
+                FirstNav='Home' FirstNavLink='/'
+                SecondNav='Magazine' SecondNavLink='/magazine'
+                ThirdNav='Podcast' ThirdNavLink='/podcast'
+            />
             <main className='mx-20'>
 
                 <section className='w-full flex justify-center my-12'>

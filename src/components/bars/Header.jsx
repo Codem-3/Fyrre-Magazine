@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// Icons
 import { InstagramIcon, TwitterIcon, WifiIcon, YoutubeIcon } from '@/utils/icons.util'
+
 
 export const Header = (props) => {
     return (
