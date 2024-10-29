@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Pages
-import { LandingPage, MagazinePage, AuthorsPage, PodcastPage } from "@/pages";
+import { LandingPage, MagazinePage, AuthorsPage, PodcastPage, AuthorDetailsPage, PodcastDetailsPage, MagazineDetailsPage } from "@/pages";
 
 const router = createBrowserRouter([
     {
@@ -12,12 +12,24 @@ const router = createBrowserRouter([
         element: <MagazinePage />,
     },
     {
+        path: "/magazine/:id",
+        element: <MagazineDetailsPage />,
+    },
+    {
         path: "/authors",
         element: <AuthorsPage />,
     },
     {
+        path: "/authors/:id",
+        element: <AuthorDetailsPage />,
+    },
+    {
         path: "/podcast",
         element: <PodcastPage />,
+    },
+    {
+        path: "/podcast/:id",
+        element: <PodcastDetailsPage />,
     },
 ]);
 
