@@ -12,7 +12,7 @@ body {
 }
 
 * {
-    /* outline: 1px solid firebrick; */
+    outline: 1px solid firebrick;
 }
 
 html {

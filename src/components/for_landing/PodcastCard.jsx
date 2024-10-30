@@ -10,8 +10,8 @@ export const PodcastCard = () => {
         <main className="mx-5 xl:mx-20 border-t border-secondaryColor">
 
             {/* Header*/}
-            <header className="flex justify-between items-center mt-12 mb-16">
-                <p className="text-7xl font-bold uppercase">Podcast</p>
+            <header className="flex flex-col tiny:flex-row gap-3 justify-between items-center mt-12 mb-16">
+                <p className="text-4xl sm:text-7xl font-bold uppercase">Podcast</p>
                 <Link to="/podcast" className="flex gap-2 transition-all hover:text-[#B17457] duration-300">
                     <p className="uppercase font-bold">All Episodes</p>
                     <RightArrowIcon />
@@ -21,10 +21,10 @@ export const PodcastCard = () => {
             {/* Podcast Data Card */}
             <div className="flex flex-wrap xl:justify-between justify-center gap-5">
                 {data.podcasts.slice(0, 3).map((podcast, index) => (
-                    <section key={index} className="p-7 border border-secondaryColor">
+                    <section key={index} className="p-4 vsm:p-7 border border-secondaryColor">
                         <Link to={`/podcast/${podcast.id}`} className="block">
                             <div div className="flex-col" >
-                                <div className="relative w-96 h-96 flex-shrink-0 mb-5">
+                                <div className="relative vsm:w-96 h-96 flex-shrink-0 mb-5">
                                     <img
                                         src={podcast.image}
                                         alt={podcast.title}
@@ -38,7 +38,7 @@ export const PodcastCard = () => {
                                 </div>
                                 <span className="flex flex-col justify-between py-5">
                                     {/* Podcast Title & Description */}
-                                    <p className="font-bold text-3xl max-w-96 mb-8 capitalize">{podcast.title}</p>
+                                    <p className="font-bold text-2xl vsm:text-3xl max-w-96 mb-8 capitalize">{podcast.title}</p>
                                     {/* Podcast Details */}
                                     <div className="flex justify-between items-center">
                                         <span className="flex text-sm gap-6">
