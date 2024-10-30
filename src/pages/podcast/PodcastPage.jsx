@@ -26,6 +26,7 @@ export const PodcastPage = () => {
                     {data.podcasts.map((podcast, index) => (
                         <Fragment key={index}>
                             <section className="flex items-center">
+                                <p className="font-bold mr-5">{podcast.episode}</p>
                                 <div className="relative w-56 h-72 flex-shrink-0">
                                     <img
                                         src={podcast.image}
@@ -40,14 +41,14 @@ export const PodcastPage = () => {
                                 </div>
                                 <span className="flex justify-between pl-6 items-center w-full">
                                     {/* podcast Title & Description */}
-                                    <p className="font-bold text-3xl max-w-96">{podcast.title}</p>
+                                    <p className="font-bold text-3xl max-w-96 capitalize">{podcast.title}</p>
                                     {/* podcast Details */}
                                     <article className="flex justify-between items-center">
                                         <span className="flex text-sm gap-24 items-center">
                                             <p><span className="font-bold text-sm">Date</span> {podcast.date}</p>
                                             <p><span className="font-bold text-sm">Duration</span> {podcast.duration}</p>
                                             <Link to={`/podcast/${podcast.id}`} className="flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center">
-                                                <p className="uppercase font-bold text-lg">Listen</p>
+                                                <p className="uppercase font-bold text-lg">{podcast.action}</p>
                                                 <RightArrowIcon />
                                             </Link>
                                         </span>
