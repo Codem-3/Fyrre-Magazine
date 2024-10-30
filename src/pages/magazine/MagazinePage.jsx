@@ -1,7 +1,92 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+// Components
+import { Header, Footer } from '@/components';
+// Data 
+import data from '@/data/Magazine.json';
+import { MagazineIcon } from '../../utils/icons.util';
 
 export const MagazinePage = () => {
+    // State for selected category
+    const [selectedCategory, setSelectedCategory] = useState('All');
+
+    // Unique categories from data
+    const categories = ['All', ...new Set(data.cards.map(item => item.category))];
+
+    // Filtered data based on the selected category
+    const filteredCards = selectedCategory === 'All'
+        ? shuffleArray(data.cards) // Shuffle cards when "All" is selected
+        : data.cards.filter(card => card.category === selectedCategory);
+
     return (
-        <div>MagazinePage</div>
-    )
-}
+        <Fragment>
+            <Header
+                FirstNav="Home" FirstNavLink="/"
+                SecondNav="Authors" SecondNavLink="/authors"
+                ThirdNav="Podcast" ThirdNavLink="/podcast"
+            />
+            <main className="mx-20">
+
+                {/* Magazine Title Section */}
+                <section className="w-full flex justify-center my-12">
+                    <MagazineIcon />
+                </section>
+
+                {/* Category Filter Buttons */}
+                <section className="flex justify-between">
+                    <p className="uppercase font-semibold">Categories</p>
+                    <span className="flex gap-2">
+                        {categories.map(category => (
+                            <button
+                                key={category}
+                                className={`uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300 ${selectedCategory === category ? 'bg-secondaryColor text-primaryColor' : 'bg-primaryColor'}`}
+                                onClick={() => setSelectedCategory(category)}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </span>
+                </section>
+
+                {/* Magazine Data Cards */}
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
+                    {filteredCards.map((categoryData) => (
+                        categoryData.card.map(magazine => (
+                            <Link to={`/magazine/${magazine.id}`} >
+                                <div key={magazine.id} className="border border-secondaryColor/30 p-4 rounded-lg shadow-sm flex flex-col">
+                                    <span className='flex justify-between items-center mb-4'>
+                                        <p>{magazine.meta.date}</p>
+                                        <p className="uppercase px-3 py-1 border border-black rounded-full text-xs">
+                                            {categoryData.category}
+                                        </p>
+                                    </span>
+                                    <img
+                                        src={magazine.image.src}
+                                        alt={magazine.title}
+                                        className="w-full h-96 object-cover rounded-lg mb-4"
+                                    />
+                                    <h3 className="font-bold text-2xl mb-2 uppercase">{magazine.title}</h3>
+                                    <p className="text-sm mb-4 text-justify line-clamp-3">{magazine.description}</p>
+                                    <div className="flex justify-between text-sm">
+                                        <p><span className="font-bold">Text</span> {magazine.meta.author}</p>
+                                        <p><span className="font-bold">Duration</span> {magazine.meta.readTime}</p>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))
+                    ))}
+                </section>
+
+            </main>
+            <Footer />
+        </Fragment>
+    );
+};
+
+// Function to shuffle an array
+const shuffleArray = (array) => {
+    return array
+        .map(item => ({ ...item, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(item => item);
+};
