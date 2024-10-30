@@ -64,7 +64,7 @@ export const MagazineDetailsPage = () => {
             <section className="mx-20">
                 <h2 className="text-5xl font-bold mb-10">Latest Posts</h2>
                 <div className="flex flex-wrap justify-between">
-                    {data.cards.flatMap(category => category.card).slice(0, 4).map((relatedArticle, idx) => (
+                    {data.cards.flatMap(category => category.card).slice(0, 3).map((relatedArticle, idx) => (
                         relatedArticle.id !== magazine.id && (
                             <article key={idx} className="w-[410px] mb-10">
                                 <div className="flex flex-col gap-5">

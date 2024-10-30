@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 // Icons
 import { RightArrowIcon, ArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Podcast.json'
-import { Link } from 'react-router-dom';
 
 export const PodcastCard = () => {
     return (
@@ -22,31 +22,33 @@ export const PodcastCard = () => {
             <div className="flex justify-between border border-secondaryColor border-r-0">
                 {data.podcasts.slice(0, 3).map((podcast, index) => (
                     <section key={index} className="p-7 border-r border-secondaryColor">
-                        <div div className="flex-col" >
-                            <div className="relative w-96 h-96 flex-shrink-0 mb-5">
-                                <img
-                                    src={podcast.image}
-                                    alt={podcast.title}
-                                    className="w-full h-full object-cover rounded"
-                                />
-                                <span className="absolute text-primaryColor right-5 bottom-5">
-                                    <ArrowIcon />
-                                </span>
-                                <p className="absolute uppercase text-primaryColor text-2xl font-bold left-5 top-5"><span className="text-5xl block">Fyrre</span>Podcast</p>
-                                <p className="absolute text-primaryColor text-2xl font-bold left-5 bottom-5">{podcast.episode}</p>
-                            </div>
-                            <span className="flex flex-col justify-between py-5">
-                                {/* Podcast Title & Description */}
-                                <p className="font-bold text-3xl max-w-96 mb-8">{podcast.title}</p>
-                                {/* Podcast Details */}
-                                <div className="flex justify-between items-center">
-                                    <span className="flex text-sm gap-6">
-                                        <p><span className="font-bold">Date</span> {podcast.date}</p>
-                                        <p><span className="font-bold">Duration</span> {podcast.duration}</p>
+                        <Link to={`/podcast/${podcast.id}`} className="block">
+                            <div div className="flex-col" >
+                                <div className="relative w-96 h-96 flex-shrink-0 mb-5">
+                                    <img
+                                        src={podcast.image}
+                                        alt={podcast.title}
+                                        className="w-full h-full object-cover rounded"
+                                    />
+                                    <span className="absolute text-primaryColor right-5 bottom-5">
+                                        <ArrowIcon />
                                     </span>
+                                    <p className="absolute uppercase text-primaryColor text-2xl font-bold left-5 top-5"><span className="text-5xl block">Fyrre</span>Podcast</p>
+                                    <p className="absolute text-primaryColor text-2xl font-bold left-5 bottom-5">{podcast.episode}</p>
                                 </div>
-                            </span>
-                        </div>
+                                <span className="flex flex-col justify-between py-5">
+                                    {/* Podcast Title & Description */}
+                                    <p className="font-bold text-3xl max-w-96 mb-8">{podcast.title}</p>
+                                    {/* Podcast Details */}
+                                    <div className="flex justify-between items-center">
+                                        <span className="flex text-sm gap-6">
+                                            <p><span className="font-bold">Date</span> {podcast.date}</p>
+                                            <p><span className="font-bold">Duration</span> {podcast.duration}</p>
+                                        </span>
+                                    </div>
+                                </span>
+                            </div>
+                        </Link>
                     </section>
                 ))
                 }
