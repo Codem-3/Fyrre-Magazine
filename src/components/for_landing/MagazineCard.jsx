@@ -16,21 +16,21 @@ export const MagazineCard = () => {
                         {categoryItem.card.slice(0, 2).map((cardItem, idx) => (
                             <span>
                                 <Link to={`/magazine/${cardItem.id}`} className="block">
-                                    <div key={idx} className="flex gap-10">
-                                        <div className="w-96 h-64 flex-shrink-0">
+                                    <div key={idx} className="flex flex-col md:flex-row md:gap-10">
+                                        <div className="md:w-96 h-72 flex-shrink-0">
                                             <img src={cardItem.image.src} alt={cardItem.title} className="w-full h-full object-cover rounded" />
                                         </div>
                                         <span className="flex flex-col justify-between py-5">
                                             {/* Magazine Title & Description */}
                                             <div>
                                                 <p className="font-bold text-3xl">{cardItem.title}</p>
-                                                <p className="mt-3">{cardItem.description}</p>
+                                                <p className="mt-3 line-clamp-5 my-5 text-sm vsm:text-base">{cardItem.description}</p>
                                             </div>
                                             {/* Magazine Details */}
                                             <div className="flex justify-between items-center">
                                                 <span className="flex text-sm gap-6">
                                                     <p><span className="font-bold">Text</span> {cardItem.meta.author}</p>
-                                                    <p><span className="font-bold">Date</span> {cardItem.meta.date}</p>
+                                                    <p className="hidden vsm:block"><span className="font-bold">Date</span> {cardItem.meta.date}</p>
                                                     <p><span className="font-bold">Read</span> {cardItem.meta.readTime}</p>
                                                 </span>
                                                 <button className="uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">{categoryItem.category}</button>
