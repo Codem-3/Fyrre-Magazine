@@ -11,21 +11,21 @@ export const AuthorsPage = () => {
     return (
         <Fragment>
             <Header
-                FirstNav='Home' FirstNavLink='/'
-                SecondNav='Magazine' SecondNavLink='/magazine'
-                ThirdNav='Podcast' ThirdNavLink='/podcast'
+                FirstNav="Home" FirstNavLink="/"
+                SecondNav="Magazine" SecondNavLink="/magazine"
+                ThirdNav="Podcast" ThirdNavLink="/podcast"
             />
-            <main className='mx-20'>
+            <main className="mx-20">
 
-                <section className='w-full flex justify-center my-12'>
+                <section className="w-full flex justify-center my-12">
                     <AuthorIcon />
                 </section>
 
                 {/* Authors Data Card */}
-                <section className='flex flex-col gap-8 my-28'>
+                <section className="flex flex-col gap-8 my-28">
                     {data.profiles.map((authors, index) => (
                         <Fragment key={index}>
-                            <section className='flex items-center'>
+                            <section className="flex items-center">
                                 <div className="relative w-[150px] h-[130px]">
                                     <img
                                         src={authors.image}
@@ -33,16 +33,16 @@ export const AuthorsPage = () => {
                                         className="w-full h-full object-center object-cover rounded-full"
                                     />
                                 </div>
-                                <span className='flex justify-between pl-12 items-center w-full'>
+                                <span className="flex justify-between pl-12 items-center w-full">
                                     {/* Authors Title & Description */}
                                     <p className="font-bold text-3xl">{authors.name}</p>
                                     {/* Authors Details */}
-                                    <article className='flex justify-between items-center'>
-                                        <span className='flex text-sm gap-24 items-center'>
-                                            <p><span className='font-bold text-sm'>Job</span> {authors.job}</p>
-                                            <p><span className='font-bold text-sm'>City</span> {authors.city}</p>
-                                            <Link to={`/authors/${authors.id}`} className='flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center'>
-                                                <p className='uppercase font-bold text-lg'>About</p>
+                                    <article className="flex justify-between items-center">
+                                        <span className="flex text-sm gap-24 items-center">
+                                            <p><span className="font-bold text-sm">Job</span> {authors.job}</p>
+                                            <p><span className="font-bold text-sm">City</span> {authors.city}</p>
+                                            <Link to={`/authors/${authors.id}`} className="flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center">
+                                                <p className="uppercase font-bold text-lg">About</p>
                                                 <RightArrowIcon />
                                             </Link>
                                         </span>

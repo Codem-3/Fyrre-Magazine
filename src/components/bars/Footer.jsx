@@ -6,33 +6,33 @@ import { InstagramIcon, TwitterIcon, WifiIcon, YoutubeIcon } from '@/utils/icons
 
 export const Footer = () => {
     return (
-        <footer className='bg-secondaryColor text-primaryColor overflow-hidden'>
+        <footer className="bg-secondaryColor text-primaryColor overflow-hidden">
             <NewsBar />
 
             {/* Email Section*/}
-            <section className='flex justify-between items-center uppercase my-28 mx-20'>
-                <p className='text-7xl font-semibold max-w-screen-sm leading-[110%]'>Design News to your inbox</p>
-                <span className='flex gap-3'>
-                    <input placeholder='example@mail.com' className='px-4 py-2 text-secondaryColor w-80' defaultValue='mohamed.m.abdalfattah@gmail.com' />
-                    <button className='uppercase px-6 py-1 bg-primaryColor text-secondaryColor font-medium'>Sign Up</button>
+            <section className="flex justify-between items-center uppercase my-28 mx-20">
+                <p className="text-7xl font-semibold max-w-screen-sm leading-[110%]">Design News to your inbox</p>
+                <span className="flex gap-3">
+                    <input placeholder="example@mail.com" className="px-4 py-2 text-secondaryColor w-80" defaultValue="mohamed.m.abdalfattah@gmail.com" />
+                    <button className="uppercase px-6 py-1 bg-primaryColor text-secondaryColor font-medium">Sign Up</button>
                 </span>
             </section>
 
             {/* Navigation Section*/}
-            <section className='flex justify-between items-baseline mb-20 mx-20'>
-                <p className='uppercase text-xl font-bold'>Fyrre Magazine</p>
-                <span className='flex gap-56'>
-                    <ul className='flex flex-col gap-3'>
+            <section className="flex justify-between items-baseline mb-20 mx-20">
+                <p className="uppercase text-xl font-bold">Fyrre Magazine</p>
+                <span className="flex gap-56">
+                    <ul className="flex flex-col gap-3">
                         <li>Art</li>
                         <li>Design</li>
                         <li>Architecture</li>
                     </ul>
-                    <ul className='flex flex-col gap-3'>
+                    <ul className="flex flex-col gap-3">
                         <li>Magazine</li>
                         <li>Podcast</li>
                         <li>Authors</li>
                     </ul>
-                    <ul className='flex flex-col gap-3'>
+                    <ul className="flex flex-col gap-3">
                         <li>StyleGuide</li>
                         <li>Licensing</li>
                         <li>Changelog</li>
@@ -41,22 +41,19 @@ export const Footer = () => {
             </section>
 
             {/* bottom Section*/}
-            <section className='flex justify-between items-center mb-6 mx-20'>
-                <p className='text-sm'>© code by Mohamed Mohamed -  Designed by WebFlow</p>
-                <span className='flex gap-3 items-center'>
-                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
-                        <InstagramIcon />
-                    </span>
-                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
-                        <TwitterIcon />
-                    </span>
-                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
-                        <YoutubeIcon />
-                    </span>
-                    <span className='hover:scale-125 transition-all hover:text-[#B17457] duration-300 cursor-pointer'>
-                        <WifiIcon />
-                    </span>
-                </span>
+            <section className="flex justify-between items-center mb-6 mx-20">
+                <p className="text-sm">© code by Mohamed Mohamed -  Designed by WebFlow</p>
+                {/* Social */}
+                <div className="flex gap-3 items-center">
+                    {[InstagramIcon, TwitterIcon, YoutubeIcon, WifiIcon].map((Icon, idx) => (
+                        <span
+                            key={idx}
+                            className="hover:scale-125 transition-all duration-300 hover:text-[#B17457] cursor-pointer"
+                        >
+                            <Icon />
+                        </span>
+                    ))}
+                </div>
             </section>
         </footer>
     )
