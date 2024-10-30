@@ -18,8 +18,8 @@ export const HeroSection = () => {
                 <p className="text-3xl tiny:text-5xl md:text-8xl font-semibold uppercase md:min-w-[640px]">Don't close your eyes</p>
                 <span className="flex flex-col justify-between">
                     <p className="text-sm lg:text-lg text-justify line-clamp-4">Reflects on the fleeting moments of life and the importance of cherishing each experience, especially in relationships. The song conveys a sense of urgency, urging listeners to stay present and fully engage with their loved ones.</p>
-                    <div className="flex justify-between items-center">
-                        <span className="flex text-sm gap-3 vsm:gap-6 mt-3 sm:mt-0">
+                    <div className="flex justify-between items-center mt-3 sm:mt-0">
+                        <span className="flex text-sm gap-3 vsm:gap-6">
                             <p><span className="font-bold">Text</span> Jakob Gronberg</p>
                             <p className="hidden vsm:block"><span className="font-bold">Date</span> 16. March 2022</p>
                             <p><span className="font-bold">Duration</span> 1 Min</p>
