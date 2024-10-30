@@ -7,7 +7,7 @@ import data from '@/data/Podcast.json'
 
 export const PodcastCard = () => {
     return (
-        <main className="mx-20 border-t border-secondaryColor">
+        <main className="mx-5 xl:mx-20 border-t border-secondaryColor">
 
             {/* Header*/}
             <header className="flex justify-between items-center mt-12 mb-16">
@@ -19,9 +19,9 @@ export const PodcastCard = () => {
             </header>
 
             {/* Podcast Data Card */}
-            <div className="flex justify-between border border-secondaryColor border-r-0">
+            <div className="flex flex-wrap xl:justify-between justify-center gap-5">
                 {data.podcasts.slice(0, 3).map((podcast, index) => (
-                    <section key={index} className="p-7 border-r border-secondaryColor">
+                    <section key={index} className="p-7 border border-secondaryColor">
                         <Link to={`/podcast/${podcast.id}`} className="block">
                             <div div className="flex-col" >
                                 <div className="relative w-96 h-96 flex-shrink-0 mb-5">
@@ -38,7 +38,7 @@ export const PodcastCard = () => {
                                 </div>
                                 <span className="flex flex-col justify-between py-5">
                                     {/* Podcast Title & Description */}
-                                    <p className="font-bold text-3xl max-w-96 mb-8">{podcast.title}</p>
+                                    <p className="font-bold text-3xl max-w-96 mb-8 capitalize">{podcast.title}</p>
                                     {/* Podcast Details */}
                                     <div className="flex justify-between items-center">
                                         <span className="flex text-sm gap-6">

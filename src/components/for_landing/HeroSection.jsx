@@ -8,7 +8,7 @@ import { TitleIcon } from '@/utils/icons.util'
 
 export const HeroSection = () => {
     return (
-        <main className="mx-20">
+        <main className="mx-5 xl:mx-20">
             <div className="w-full flex justify-center my-12">
                 <TitleIcon />
             </div>

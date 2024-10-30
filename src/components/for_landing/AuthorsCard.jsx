@@ -7,7 +7,7 @@ import data from '@/data/Authors.json'
 
 export const AuthorsCard = () => {
     return (
-        <main className="my-10 mx-20 border-t border-secondaryColor">
+        <main className="my-10 mx-5 xl:mx-20 border-t border-secondaryColor">
 
             {/* Header*/}
             <header className="flex justify-between items-center mt-12 mb-16">
@@ -19,9 +19,9 @@ export const AuthorsCard = () => {
             </header>
 
             {/* Authors Data Card */}
-            <div className="flex flex-wrap justify-between">
+            <div className="flex flex-wrap xl:justify-between justify-center gap-5">
                 {data.profiles.slice(0, 4).map((authors, index) => (
-                    <section key={index} className="p-7">
+                    <section key={index} className="p-2">
                         <Link to={`/authors/${authors.id}`} className="block">
                             <div className="relative w-64 h-64 mb-5">
                                 <img

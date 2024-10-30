@@ -10,9 +10,11 @@ export const LandingPage = () => {
                 ThirdNav="Podcast" ThirdNavLink="/podcast"
             />
             <HeroSection />
-            <span className="flex justify-between gap-20 mx-20 my-12">
+            <span className="flex justify-between gap-5 xl:gap-20 mx-5 xl:mx-20 my-12">
                 <MagazineCard />
-                <PrintMagazine />
+                <span className="hidden lg:block">
+                    <PrintMagazine />
+                </span>
             </span>
             <PodcastCard />
             <AuthorsCard />
