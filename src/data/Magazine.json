@@ -41,6 +41,19 @@
                         "date": "10. February 2021",
                         "readTime": "4 Min"
                     }
+                },
+                {
+                    "id": 4,
+                    "image": {
+                        "src": "https://s3-alpha-sig.figma.com/img/8f7d/ca4c/025eaba7cd0ad4d76b15dc4282f3df86?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZIWER7hA-fggwI8daPxqFDSeQOXh7ArQHXJ1Sn76dfi2hUIXaaEZ4JxJ0KkjK5Kij9vF92~xBbww68EmAEBjgreaHr~e93~tQeA7yfIm650f9~VXxYTSNk1R6YX1vr-IVR~yYG~meQEb~VYC-v1y8d3TfKZoeC18lHObDzNS3hYBjPazXxWEcNc~tThsTanbRCKWh--7gNAVaeWYPtt34xY8xQiFP66C3SmXvsDUkXu5-jDpAFt35grL9BhcAiEFs1LOkjcCcbHEwgtmzJJpxEqRGanlLeRZi9OtJxA2rsK0TbVTe9co5EfthI-HZNpfay~HGtsIDaDXjx16QF96kg__"
+                    },
+                    "title": "Colorful Future",
+                    "description": "Originally a military dependents' village, this area was transformed into an open-air art exhibit by a local resident, known as “Grandpa Rainbow.” His vivid murals cover walls, floors, and even sidewalks, making the village a captivating rainbow of colors.",
+                    "meta": {
+                        "author": "Jakob Gronberg",
+                        "date": "10. February 2021",
+                        "readTime": "9 Min"
+                    }
                 }
             ]
         },
@@ -85,6 +98,19 @@
                         "date": "15. June 2023",
                         "readTime": "5 Min"
                     }
+                },
+                {
+                    "id": 4,
+                    "image": {
+                        "src": "https://s3-alpha-sig.figma.com/img/e4b5/c17a/6811df3251731843157eede74130b263?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wvb2fhLIo2O9AiwiZdMkw5iXBazPf5xVz2T65aDn0U8LwWkCba6MKT2SdluTXt4slApCIR8SFzYHJpwHMos8jTV7k1kjMOuyBgKpFvKe4-IVfxj2sptxMY6~2~O-YxKeWuH8l1X0NBpPGzcUDzOptHuQl4Hm~IM4v5Uy9J7hEAb38VLaMWfaQIijW44BK1x2NMOP1-jttkSPXvYW8nFm65CvX~F06y8IB-w2bLDcmMqazVA1TNZWc57pDrLzoZljlyLv5AQ8hoQbJ8QSRLy6ZA0yy6e15YpdsplW3uUafxufgYDXp6TFYY3FfHnHqByAx~Usl~IFj3dc--9z64vjqw__"
+                    },
+                    "title": "Most colorful places",
+                    "description": "The picturesque coastal villages of Cinque Terre cling to steep cliffs, with colorful houses set against the deep blue of the Mediterranean. The charming towns are filled with narrow alleyways, bustling squares, and waterfronts, making for an artist’s dream location.",
+                    "meta": {
+                        "author": "Jakob Gronberg",
+                        "date": "1. June 2020",
+                        "readTime": "3 Min"
+                    }
                 }
             ]
         },
@@ -128,6 +154,19 @@
                         "author": "Tom Hardy",
                         "date": "22. January 2022",
                         "readTime": "6 Min"
+                    }
+                },
+                {
+                    "id": 4,
+                    "image": {
+                        "src": "https://s3-alpha-sig.figma.com/img/94a8/2f6f/d4bbfdbc887e10d39a13eccfcb158f3c?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bkdQJrQMcet1ACIgBNLU~BxgJ1A4em9HVmeNv-oL8zQLiTa2AvttFoSjc4bdEAieiR5Ub-9qxJ0ybMTm1eyN-f7gr6yMoYOuqY8W08nBROpNTqO-pPeaQStNES6FCU5hw-i1CTJPxUS1uPi-nQ7AWgFZXhJPPf8YEa~mIEewYt-A9SxT642I1QNc6fSvVeGO0P1A7Ne5LH-UKJvNUoK-taxIP3SbxNVk~qXTvz8UBM5lWcVkcr-q1cfbvdLAAd2T-IkrRKjP-ZXglMt-iyhoCts~52L6ZcHElKNxIg5gv9bAsh0a8PszrBh6cRzpJHW5423AbibykNYEBmeX2~~rvw__"
+                    },
+                    "title": "Only in Your Heart",
+                    "description": "song by the American rock band America, written by band member Dan Peek. It was released in 1972 on their album Homecoming, which also features other well-known songs like Ventura Highway. The song is a tender, introspective piece with poetic lyrics about love, introspection, and longing, capturing the band's signature soft rock and folk sound.",
+                    "meta": {
+                        "author": "Jakob Gronberg",
+                        "date": "25. May 2022",
+                        "readTime": "1 Min"
                     }
                 }
             ]

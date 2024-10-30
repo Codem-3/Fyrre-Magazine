@@ -13,7 +13,7 @@ export const PodcastPage = () => {
             <Header
                 FirstNav="Home" FirstNavLink="/"
                 SecondNav="Magazine" SecondNavLink="/magazine"
-                ThirdNav="podcast" ThirdNavLink="/podcast"
+                ThirdNav="Authors" ThirdNavLink="/authors"
             />
             <main className="mx-20">
 

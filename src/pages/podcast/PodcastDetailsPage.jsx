@@ -20,7 +20,7 @@ export const PodcastDetailsPage = () => {
             <Header
                 FirstNav="Home" FirstNavLink="/"
                 SecondNav="Magazine" SecondNavLink="/magazine"
-                ThirdNav="Podcast" ThirdNavLink="/podcast"
+                ThirdNav="Authors" ThirdNavLink="/authors"
             />
 
             {/* Podcast Details */}
