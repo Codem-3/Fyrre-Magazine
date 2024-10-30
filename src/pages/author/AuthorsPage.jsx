@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Header, Footer } from '@/components'
 // Icons
 import { AuthorIcon, RightArrowIcon } from '@/utils/icons.util';
-// Database 
+// Data
 import data from '@/data/Authors.json'
 
 export const AuthorsPage = () => {
