@@ -48,7 +48,7 @@
                         "src": "https://s3-alpha-sig.figma.com/img/8f7d/ca4c/025eaba7cd0ad4d76b15dc4282f3df86?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZIWER7hA-fggwI8daPxqFDSeQOXh7ArQHXJ1Sn76dfi2hUIXaaEZ4JxJ0KkjK5Kij9vF92~xBbww68EmAEBjgreaHr~e93~tQeA7yfIm650f9~VXxYTSNk1R6YX1vr-IVR~yYG~meQEb~VYC-v1y8d3TfKZoeC18lHObDzNS3hYBjPazXxWEcNc~tThsTanbRCKWh--7gNAVaeWYPtt34xY8xQiFP66C3SmXvsDUkXu5-jDpAFt35grL9BhcAiEFs1LOkjcCcbHEwgtmzJJpxEqRGanlLeRZi9OtJxA2rsK0TbVTe9co5EfthI-HZNpfay~HGtsIDaDXjx16QF96kg__"
                     },
                     "title": "Colorful Future",
-                    "description": "Originally a military dependents' village, this area was transformed into an open-air art exhibit by a local resident, known as “Grandpa Rainbow.” His vivid murals cover walls, floors, and even sidewalks, making the village a captivating rainbow of colors.",
+                    "description": "Originally a military dependents village, this area was transformed into an open-air art exhibit by a local resident .His vivid murals cover walls, floors, and even sidewalks, making the village a captivating rainbow of colors.",
                     "meta": {
                         "author": "Jakob Gronberg",
                         "date": "10. February 2021",
@@ -61,7 +61,7 @@
             "category": "Street",
             "card": [
                 {
-                    "id": 1,
+                    "id": 5,
                     "image": {
                         "src": "https://s3-alpha-sig.figma.com/img/4d90/834a/ca856f64aea37ad53668901447a777fb?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VRVlX-u29e8oeES3PjaxhTyhTQi2l7UhwtRfk6d-FnfyiZJ2wtag5zAG2X-9cQbKUy5tB0Ah9iZiZh5q-vbUN8R0me0Dg6QDfMSEcbjIOT81GMSASZZPJIskcIsmbuAgoWPXa1Y9PWS9l8RNWWZF1dhBCpITnOLooeUgy1vV~pb6FgTCDs-2hP6GZvnXyNTaeafk-d-eSG4NmIYG-078cxvlczKk9E0fn~RFRYl4r22oUE0ik4K~bf6dCKEgJvGJvu9Jgoxbf8lY30hyTC6urUG9vE4liCCFUXlwVAujbyNCMBZI7wUphVx4O1G-NMjT8204xBJmKFsQhdxxCwzsgw__"
                     },
@@ -74,7 +74,7 @@
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 6,
                     "image": {
                         "src": "https://s3-alpha-sig.figma.com/img/748f/f766/c25a880080fcbe8f5c27264e91261ce4?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XhgDoZGoLY8Xlr9HGTJi3m4CmKjO8KnQr0y0zEDOJ5J9HyGxqIjcXjSFYrQJzoLp5NTgsMBnUZOzUfUR324Shbp69on7ntTevxymljcpXDr15qRhdkcQ5AupceEeS2jHP8wHKwRKNMI00kwaERoK1dbKKbHjkOjz8GtToAf8s7DCo4qQ1k8KcRrk~x33dg4I04JnIKbFVRN9~yo7MmSH4--vM~wu2sZg7c7klecQU8NewVOkExvaIx38V2LWmzjJPPom0mJ085guAxiiNhp6ikg085tNxsV8ercFg1p0eUAIsbb~X610ILsgXK-F4kOWmZZzgU5wYJ--Jf1R8G90sA__"
                     },
@@ -87,7 +87,7 @@
                     }
                 },
                 {
-                    "id": 3,
+                    "id": 7,
                     "image": {
                         "src": "https://s3-alpha-sig.figma.com/img/c432/0a55/8181887baf8298fb59c70dbe4ff52a99?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cozN2GeEURVolwgJM9Xyzj8MGK2j1yhe82o3AMI0Nsw9vEhM2nwhLlR6xRMHmat08OpvB0bIUXTvuj~eZOgibcRFKa0PWrXQFd0bfN70Q7LAIglb99645w7nlzZg26lHcUrxscuVSK3gSkYGAIWhzHJEZgknBB0gj4TMPQffUQeAc9Fw4FkzOSAOd1Lj-YV-tAJ4FJVIkm~jIYgMpsrH3GdxzBRqb7aN86RlEZBajcSa9FOEom-rGZPLpZpmUO2XPLuBydNldX9lrSu9FM4xtpQCSw5JDU-gmfHuOqH-WLzGFAtXqVJRGTtLtNoOZtTGyqC2rshvuOoVK3oXG68lfQ__"
                     },
@@ -100,7 +100,7 @@
                     }
                 },
                 {
-                    "id": 4,
+                    "id": 8,
                     "image": {
                         "src": "https://s3-alpha-sig.figma.com/img/e4b5/c17a/6811df3251731843157eede74130b263?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wvb2fhLIo2O9AiwiZdMkw5iXBazPf5xVz2T65aDn0U8LwWkCba6MKT2SdluTXt4slApCIR8SFzYHJpwHMos8jTV7k1kjMOuyBgKpFvKe4-IVfxj2sptxMY6~2~O-YxKeWuH8l1X0NBpPGzcUDzOptHuQl4Hm~IM4v5Uy9J7hEAb38VLaMWfaQIijW44BK1x2NMOP1-jttkSPXvYW8nFm65CvX~F06y8IB-w2bLDcmMqazVA1TNZWc57pDrLzoZljlyLv5AQ8hoQbJ8QSRLy6ZA0yy6e15YpdsplW3uUafxufgYDXp6TFYY3FfHnHqByAx~Usl~IFj3dc--9z64vjqw__"
                     },
@@ -118,7 +118,7 @@
             "category": "Sculptures",
             "card": [
                 {
-                    "id": 1,
+                    "id": 9,
                     "image": {
                         "src": "https://s3-alpha-sig.figma.com/img/f863/9811/4269db65eff705d2ea34384c1ae42e0b?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oJwMP5IIxX~iV~hsBVblRnA6e1xbaG1XXUkVoDX0hCHIM3Iqj5zDPR7SxfMbQ8pVSK8Xy-FfZ~WVcLXA69Jz-FBzs5V3YHeWyekZT8vVNcjVVdbNR53Bg~yLWKAu-024CTcnu3VjRraA5xSntYbh8hK2ACMsMouTXwnhRj5Kv37mEB1zZXjSl0Be3Ff72M6EbnsmtJztR05EFm-7YxFCPzh~xUhIGbLemz~fn~q2kVs~BjsPpBRZsBNEc9BS-0~9FmV7pmgmZqrOcb4YbDxosP5SQSzwEloSVmRbpMOfh-x3PYw4v1VOG-gFzAqfazz5kMpeMZ-pEOcHkgz56lt87g__"
                     },
@@ -131,7 +131,7 @@
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 10,
                     "image": {
                         "src": "https://news.artnet.com/app/news-upload/2024/03/michelangelo-david-close-getty.jpg"
                     },
@@ -144,7 +144,7 @@
                     }
                 },
                 {
-                    "id": 3,
+                    "id": 11,
                     "image": {
                         "src": "https://www.walksinrome.com/uploads/2/5/1/0/25107996/equestrian-statue-of-constantine-the-great-by-bernini-scala-regia-vatican-city_orig.jpg"
                     },
@@ -157,7 +157,7 @@
                     }
                 },
                 {
-                    "id": 4,
+                    "id": 12,
                     "image": {
                         "src": "https://s3-alpha-sig.figma.com/img/94a8/2f6f/d4bbfdbc887e10d39a13eccfcb158f3c?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bkdQJrQMcet1ACIgBNLU~BxgJ1A4em9HVmeNv-oL8zQLiTa2AvttFoSjc4bdEAieiR5Ub-9qxJ0ybMTm1eyN-f7gr6yMoYOuqY8W08nBROpNTqO-pPeaQStNES6FCU5hw-i1CTJPxUS1uPi-nQ7AWgFZXhJPPf8YEa~mIEewYt-A9SxT642I1QNc6fSvVeGO0P1A7Ne5LH-UKJvNUoK-taxIP3SbxNVk~qXTvz8UBM5lWcVkcr-q1cfbvdLAAd2T-IkrRKjP-ZXglMt-iyhoCts~52L6ZcHElKNxIg5gv9bAsh0a8PszrBh6cRzpJHW5423AbibykNYEBmeX2~~rvw__"
                     },

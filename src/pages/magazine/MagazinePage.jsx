@@ -66,7 +66,7 @@ export const MagazinePage = () => {
                                         className="w-full h-96 object-cover rounded-lg mb-4"
                                     />
                                     <h3 className="font-bold text-2xl mb-2 uppercase">{magazine.title}</h3>
-                                    <p className="text-sm mb-4 text-justify line-clamp-3">{magazine.description}</p>
+                                    <p className="text-sm mb-4 text-justify line-clamp-3 text-secondaryColor/80">{magazine.description}</p>
                                     <div className="flex justify-between text-sm">
                                         <p><span className="font-bold">Text</span> {magazine.meta.author}</p>
                                         <p><span className="font-bold">Duration</span> {magazine.meta.readTime}</p>
