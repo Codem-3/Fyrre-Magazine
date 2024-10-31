@@ -14,11 +14,6 @@ export const MagazinePage = () => {
     // Unique categories from data
     const categories = ['All', ...new Set(data.cards.map(item => item.category))];
 
-    // Filtered data based on the selected category
-    const filteredCards = selectedCategory === 'All'
-        ? shuffleArray(data.cards) // Shuffle cards when "All" is selected
-        : data.cards.filter(card => card.category === selectedCategory);
-
     // Function to shuffle an array
     const shuffleArray = (array) => {
         return array
@@ -26,6 +21,11 @@ export const MagazinePage = () => {
             .sort((a, b) => a.sort - b.sort)
             .map(item => item);
     };
+
+    // Filtered data based on the selected category
+    const filteredCards = selectedCategory === 'All'
+        ? shuffleArray(data.cards) // Shuffle cards when "All" is selected
+        : data.cards.filter(card => card.category === selectedCategory);
 
     return (
         <Fragment>
@@ -48,7 +48,7 @@ export const MagazinePage = () => {
                         {categories.map(category => (
                             <button
                                 key={category}
-                                className={`uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300 ${selectedCategory === category ? 'bg-secondaryColor text-primaryColor' : 'bg-primaryColor'}`}
+                                className={`uppercase px-3 py-2 border border-secondaryColor rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300 ${selectedCategory === category ? 'bg-secondaryColor text-primaryColor dark:border-primaryColor' : 'bg-primaryColor dark:text-secondaryColor'}`}
                                 onClick={() => setSelectedCategory(category)}
                             >
                                 {category}
@@ -62,10 +62,10 @@ export const MagazinePage = () => {
                     {filteredCards.map((categoryData) => (
                         categoryData.card.map(magazine => (
                             <Link to={`/magazine/${magazine.id}`} >
-                                <div key={magazine.id} className="border border-secondaryColor/30 p-4 rounded-lg shadow-sm flex flex-col">
+                                <div key={magazine.id} className="border border-secondaryColor/30 dark:border-primaryColor/30 p-4 rounded-lg shadow-sm flex flex-col">
                                     <span className='flex justify-between items-center mb-4'>
                                         <p>{magazine.meta.date}</p>
-                                        <p className="uppercase px-3 py-1 border border-black rounded-full text-xs">
+                                        <p className="uppercase px-3 py-1 border border-secondaryColor dark:border-primaryColor rounded-full text-xs">
                                             {categoryData.category}
                                         </p>
                                     </span>
@@ -75,7 +75,7 @@ export const MagazinePage = () => {
                                         className="w-full h-96 object-cover rounded-lg mb-4 hover:scale-105 transition-all duration-300"
                                     />
                                     <h3 className="font-bold text-2xl mb-2 uppercase line-clamp-1">{magazine.title}</h3>
-                                    <p className="text-sm mb-4 text-justify line-clamp-3 text-secondaryColor/80">{magazine.description}</p>
+                                    <p className="text-sm mb-4 text-justify line-clamp-3 text-secondaryColor/80 dark:text-primaryColor/80">{magazine.description}</p>
                                     <div className="flex flex-col xl:flex-row gap-2 justify-between text-sm">
                                         <p><strong>Author</strong> {magazine.meta.author}</p>
                                         <p><strong>Date</strong> {magazine.meta.date}</p>

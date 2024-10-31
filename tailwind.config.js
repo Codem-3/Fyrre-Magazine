@@ -8,9 +8,8 @@ export default {
     extend: {
       colors: {
         primaryColor: "#FFFFFF", // Light mode primary color
-        secondaryColor: "#000000", // Light mode secondary color
-        darkPrimaryColor: "#181818", // Dark mode primary color
-        darkSecondaryColor: "#FFFFFF", // Dark mode secondary color
+        secondaryColor: "#181818", // Light mode secondary color
+        borderColor: "#B17457",
       },
       screens: {
         'xl': '1280px',

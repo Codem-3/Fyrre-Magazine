@@ -12,7 +12,7 @@ export const PodcastCard = () => {
     }
 
     return (
-        <main className="mx-5 xl:mx-20 border-t border-secondaryColor">
+        <main className="mx-5 xl:mx-20 border-t border-secondaryColor dark:border-primaryColor">
 
             {/* Header*/}
             <header className="flex flex-col tiny:flex-row gap-3 justify-between items-center mt-12 mb-16">
@@ -26,7 +26,7 @@ export const PodcastCard = () => {
             {/* Podcast Data Card */}
             <div className="flex flex-wrap xl:justify-between justify-center gap-5">
                 {data.podcasts.slice(0, 3).map((podcast, index) => (
-                    <section key={index} className="p-4 vsm:p-7 border border-secondaryColor">
+                    <section key={index} className="p-4 vsm:p-7 border border-secondaryColor dark:border-primaryColor">
                         <Link to={`/podcast/${podcast.id}`} className="block">
                             <div div className="flex-col" >
 

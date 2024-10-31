@@ -39,14 +39,14 @@ export const MagazineCard = () => {
                                                     <p><span className={styles.BoldStyle}>Date</span> {cardItem.meta.date}</p>
                                                     <p><span className={styles.BoldStyle}>Read</span> {cardItem.meta.readTime}</p>
                                                 </span>
-                                                <button className="uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">{categoryItem.category}</button>
+                                                <button className="uppercase px-3 py-2 border border-secondaryColor dark:border-primaryColor rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">{categoryItem.category}</button>
                                             </div>
                                         </span>
                                     </div>
 
                                     {/* Hide Line After Last Card */}
                                     {!(idx === categoryItem.card.slice(0, 2).length - 1 && index === data.cards.length - 1) && (
-                                        <hr className="border border-black/30 my-12" />
+                                        <hr className="border border-black/30 dark:border-primaryColor my-12" />
                                     )}
                                 </Link>
                             </span>

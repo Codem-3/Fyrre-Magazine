@@ -31,7 +31,7 @@ export const MagazineDetailsPage = () => {
                         alt={magazine.title}
                         className="w-full lg:w-96 h-96 object-cover rounded-lg hover:scale-105 transition-all duration-300"
                     />
-                    <div className="flex items-center justify-between w-full mt-5 border-t-2 border-secondaryColor/30 pt-4">
+                    <div className="flex items-center justify-between w-full mt-5 border-t-2 border-secondaryColor/30 dark:border-primaryColor pt-4">
                         <h2 className="tiny:text-xl font-semibold uppercase">Follow</h2>
                         <div className="flex gap-3">
                             {[InstagramIcon, TwitterIcon, YoutubeIcon, WifiIcon].map((Icon, idx) => (
@@ -48,9 +48,9 @@ export const MagazineDetailsPage = () => {
 
                 <section className="flex flex-col gap-5">
                     <h1 className="text-4xl vsm:text-7xl font-bold capitalize">{magazine.title}</h1>
-                    <p className="italic text-secondaryColor/60 text-sm vsm:text-base">{magazine.meta.date}</p>
+                    <p className="italic text-secondaryColor/60 dark:text-primaryColor/60 text-sm vsm:text-base">{magazine.meta.date}</p>
                     <p>{magazine.sub_description}</p>
-                    <p className="text-secondaryColor/60 text-sm vsm:text-base">{magazine.description}</p>
+                    <p className="text-secondaryColor/60 dark:text-primaryColor/70 text-sm vsm:text-base">{magazine.description}</p>
                     <div className="flex flex-col xl:flex-row gap-2 justify-between text-sm">
                         <p><strong>Author</strong> {magazine.meta.author}</p>
                         <p><strong>Date</strong> {magazine.meta.date}</p>
@@ -59,7 +59,7 @@ export const MagazineDetailsPage = () => {
                 </section>
             </main>
 
-            <hr className="border-secondaryColor m-5 xl:m-20" />
+            <hr className="border-secondaryColor dark:border-primaryColor m-5 xl:m-20" />
 
             {/* Latest Posts */}
             <section className="mx-5 xl:mx-20">
