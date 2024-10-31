@@ -8,6 +8,12 @@ import { AuthorIcon, RightArrowIcon } from '@/utils/icons.util';
 import data from '@/data/Authors.json'
 
 export const AuthorsPage = () => {
+
+    const styles = {
+        linkStyle: `flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center`,
+        imgStyle: `w-full h-full object-center object-cover rounded-lg hover:scale-105 transition-all duration-300`
+    }
+
     return (
         <Fragment>
             <Header
@@ -30,7 +36,7 @@ export const AuthorsPage = () => {
                                     <img
                                         src={authors.image}
                                         alt={authors.title}
-                                        className="w-full h-full object-center object-cover rounded-lg hover:scale-105 transition-all duration-300"
+                                        className={styles.imgStyle}
                                     />
                                 </div>
                                 <span className="flex flex-col md:flex-row gap-5 justify-between md:pl-6 items-center w-full">
@@ -39,9 +45,9 @@ export const AuthorsPage = () => {
                                     {/* Authors Details */}
                                     <article className="flex justify-between items-center">
                                         <span className="flex text-sm gap-5 lg:gap-24 items-center">
-                                            <p><span className="font-bold text-sm">Job</span> {authors.job}</p>
-                                            <p><span className="font-bold text-sm">City</span> {authors.city}</p>
-                                            <Link to={`/authors/${authors.id}`} className="flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center">
+                                            <p><strong>Job</strong> {authors.job}</p>
+                                            <p><strong>City</strong> {authors.city}</p>
+                                            <Link to={`/authors/${authors.id}`} className={styles.linkStyle}>
                                                 <p className="uppercase font-bold vsm:text-lg">About</p>
                                                 <RightArrowIcon />
                                             </Link>

@@ -2,12 +2,13 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 // Components
 import { Header, Footer } from '@/components';
+// Icon
+import { MagazineIcon } from '@/utils/icons.util';
 // Data 
 import data from '@/data/Magazine.json';
-import { MagazineIcon } from '../../utils/icons.util';
 
 export const MagazinePage = () => {
-    // State for selected category
+
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     // Unique categories from data
@@ -17,6 +18,14 @@ export const MagazinePage = () => {
     const filteredCards = selectedCategory === 'All'
         ? shuffleArray(data.cards) // Shuffle cards when "All" is selected
         : data.cards.filter(card => card.category === selectedCategory);
+
+    // Function to shuffle an array
+    const shuffleArray = (array) => {
+        return array
+            .map(item => ({ ...item, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(item => item);
+    };
 
     return (
         <Fragment>
@@ -68,9 +77,9 @@ export const MagazinePage = () => {
                                     <h3 className="font-bold text-2xl mb-2 uppercase line-clamp-1">{magazine.title}</h3>
                                     <p className="text-sm mb-4 text-justify line-clamp-3 text-secondaryColor/80">{magazine.description}</p>
                                     <div className="flex flex-col xl:flex-row gap-2 justify-between text-sm">
-                                        <p><span className="font-bold">Author</span> {magazine.meta.author}</p>
-                                        <p><span className="font-bold">Date</span> {magazine.meta.date}</p>
-                                        <p><span className="font-bold">Duration</span> {magazine.meta.readTime}</p>
+                                        <p><strong>Author</strong> {magazine.meta.author}</p>
+                                        <p><strong>Date</strong> {magazine.meta.date}</p>
+                                        <p><strong>Duration</strong> {magazine.meta.readTime}</p>
                                     </div>
                                 </div>
                             </Link>
@@ -82,12 +91,4 @@ export const MagazinePage = () => {
             <Footer />
         </Fragment>
     );
-};
-
-// Function to shuffle an array
-const shuffleArray = (array) => {
-    return array
-        .map(item => ({ ...item, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(item => item);
 };
