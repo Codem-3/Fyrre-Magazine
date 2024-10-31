@@ -15,7 +15,7 @@ export const Header = (props) => {
     }
 
     return (
-        <header className="mt-6 sm:mt-12 mx-5 xl:mx-20 dark:bg-darkPrimaryColor dark:text-darkSecondaryColor">
+        <header className="pt-6 sm:pt-12 mx-5 xl:mx-20 dark:bg-darkPrimaryColor dark:text-darkSecondaryColor">
             <main className="flex justify-between items-center mb-4">
 
                 {/* Logo */}
@@ -31,7 +31,7 @@ export const Header = (props) => {
                 </div>
 
                 {/* Navigation */}
-                <ul className={`flex md:flex gap-6 items-center text-xl ${isMenuOpen ? "flex-col md:flex-row absolute md:static bg-white md:bg-transparent shadow-2xl md:shadow-none top-20 right-5 p-5 border border-secondaryColor z-50" : "hidden md:flex"}`}>
+                <ul className={`flex md:flex gap-6 items-center text-xl ${isMenuOpen ? "flex-col md:flex-row absolute md:static bg-primaryColor dark:bg-secondaryColor dark:text-primaryColor md:bg-transparent shadow-2xl md:shadow-none top-20 right-5 p-5 border border-secondaryColor dark:border-borderColor z-50" : "hidden md:flex"}`}>
 
                     <Link to={props.FirstNavLink} className={styles.linkStyle}>
                         <li>{props.FirstNav}</li>
@@ -42,7 +42,7 @@ export const Header = (props) => {
                     <Link to={props.ThirdNavLink} className={styles.linkStyle}>
                         <li>{props.ThirdNav}</li>
                     </Link>
-                    <hr className="w-4 border-secondaryColor" />
+                    <hr className="w-4 border-secondaryColor dark:border-primaryColor" />
 
                     {/* Social Icons */}
                     <div className="flex gap-3 items-center">
@@ -58,7 +58,7 @@ export const Header = (props) => {
 
                 </ul>
             </main>
-            <hr className="border-secondaryColor" />
+            <hr className="border-secondaryColor dark:border-primaryColor" />
         </header>
     );
 }

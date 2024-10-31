@@ -32,7 +32,7 @@ export const AuthorDetailsPage = () => {
                         alt={author.name}
                         className="w-96 h-96 object-cover rounded-lg hover:scale-105 transition-all duration-300"
                     />
-                    <div className="flex items-center justify-between w-full mt-5 border-t-2 border-secondaryColor/30 pt-4">
+                    <div className="flex items-center justify-between w-full mt-5 border-t-2 border-secondaryColor/30 dark:border-primaryColor pt-4">
                         <h2 className="tiny:text-xl font-semibold uppercase">Follow</h2>
                         <div className="flex gap-3">
                             {[InstagramIcon, TwitterIcon, YoutubeIcon, WifiIcon].map((Icon, idx) => (
@@ -50,11 +50,11 @@ export const AuthorDetailsPage = () => {
                 <section className="flex flex-col gap-5">
                     <h1 className="text-4xl vsm:text-7xl font-bold capitalize">{author.name}</h1>
                     <p>{author.about}</p>
-                    <p className="italic text-secondaryColor/60 text-sm vsm:text-base">{author.description.repeat(5)}</p>
+                    <p className="italic text-secondaryColor/60 dark:text-primaryColor text-sm vsm:text-base">{author.description.repeat(5)}</p>
                 </section>
             </main>
 
-            <hr className="border-secondaryColor m-5 xl:m-20" />
+            <hr className="border-secondaryColor dark:border-primaryColor m-5 xl:m-20" />
 
             {/* Articles by Author */}
             <section className="mx-5 xl:mx-20">

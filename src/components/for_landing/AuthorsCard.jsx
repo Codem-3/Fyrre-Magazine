@@ -12,7 +12,7 @@ export const AuthorsCard = () => {
     }
 
     return (
-        <main className="my-10 mx-5 xl:mx-20 border-t border-secondaryColor">
+        <main className="my-10 mx-5 xl:mx-20 border-t border-secondaryColor dark:border-primaryColor">
 
             {/* Header*/}
             <header className="flex flex-col tiny:flex-row gap-3 justify-between items-center mt-12 mb-16">

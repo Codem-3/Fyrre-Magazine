@@ -19,7 +19,7 @@ export const PodcastDetailsPage = () => {
         ContainerStyle: `mx-5 xl:mx-20 my-10 flex flex-col lg:flex-row gap-10 vsm:gap-12`,
         detailsStyle: `flex items-center justify-between w-full mt-2 lg:mt-5`,
         h2Style: `text-xl font-semibold`,
-        italicStyle: `italic text-secondaryColor/60 text-sm vsm:text-base`,
+        italicStyle: `italic text-secondaryColor/60 dark:text-primaryColor/60 text-sm vsm:text-base`,
     }
 
     return (
@@ -49,7 +49,7 @@ export const PodcastDetailsPage = () => {
                     </section>
 
                     {/* Listen On Section*/}
-                    <section className="flex items-center justify-between w-full mt-5 border-b-2 border-secondaryColor/30 pb-4">
+                    <section className="flex items-center justify-between w-full mt-5 border-b-2 border-secondaryColor/30 dark:border-primaryColor/30 pb-4">
                         <h2 className={styles.h2Style}>Listen On</h2>
                         <div className="flex gap-3">
                             {[SpotifyIcon, AppleIcon, CloudIcon].map((Icon, idx) => (
