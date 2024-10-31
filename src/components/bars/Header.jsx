@@ -1,13 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // Icons
 import { InstagramIcon, TwitterIcon, WifiIcon, YoutubeIcon } from '@/utils/icons.util';
+import { BsSun } from "react-icons/bs";
+import { BiMoon } from "react-icons/bi";
 
 export const Header = (props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [darkMode, setDarkMode] = useState(true);
 
+    // Mobile Menu
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    // Dark Mode Theme
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setDarkMode(false);
+        }
+    }, []);
+
+    const toggleDarkMode = () => {
+        if (darkMode) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        setDarkMode(!darkMode);
     };
 
     const styles = {
@@ -54,6 +81,10 @@ export const Header = (props) => {
                                 <Icon />
                             </span>
                         ))}
+                    </div>
+
+                    <div onClick={toggleDarkMode}>
+                        {darkMode ? <BiMoon /> : <BsSun />}
                     </div>
 
                 </ul>

@@ -48,7 +48,7 @@ export const MagazinePage = () => {
                         {categories.map(category => (
                             <button
                                 key={category}
-                                className={`uppercase px-3 py-2 border border-secondaryColor rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300 ${selectedCategory === category ? 'bg-secondaryColor text-primaryColor' : 'bg-primaryColor dark:text-secondaryColor'}`}
+                                className={`uppercase px-3 py-2 border border-secondaryColor rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300 ${selectedCategory === category ? 'bg-secondaryColor text-primaryColor dark:border-primaryColor' : 'bg-primaryColor dark:text-secondaryColor'}`}
                                 onClick={() => setSelectedCategory(category)}
                             >
                                 {category}

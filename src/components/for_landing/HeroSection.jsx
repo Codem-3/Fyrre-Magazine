@@ -31,7 +31,7 @@ export const HeroSection = () => {
                             <p><span className={styles.BoldStyle}>Date</span> 16. March 2022</p>
                             <p><span className={styles.BoldStyle}>Duration</span> 1 Min</p>
                         </span>
-                        <button className="uppercase px-3 py-2 border border-secondaryColor dark:bg-primaryColor dark:text-secondaryColor rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">Life</button>
+                        <button className="uppercase px-3 py-2 border border-secondaryColor dark:border-primaryColor rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">Life</button>
                     </div>
                 </span>
             </section>
