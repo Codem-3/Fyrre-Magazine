@@ -30,7 +30,7 @@ export const AuthorsPage = () => {
                                     <img
                                         src={authors.image}
                                         alt={authors.title}
-                                        className="w-full h-full object-center object-cover rounded-lg"
+                                        className="w-full h-full object-center object-cover rounded-lg hover:scale-105 transition-all duration-300"
                                     />
                                 </div>
                                 <span className="flex flex-col md:flex-row gap-5 justify-between md:pl-6 items-center w-full">
