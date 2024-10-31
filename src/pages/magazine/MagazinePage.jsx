@@ -25,7 +25,7 @@ export const MagazinePage = () => {
                 SecondNav="Authors" SecondNavLink="/authors"
                 ThirdNav="Podcast" ThirdNavLink="/podcast"
             />
-            <main className="mx-20">
+            <main className="mx-5 xl:mx-20">
 
                 {/* Magazine Title Section */}
                 <section className="w-full flex justify-center my-12">
@@ -33,8 +33,8 @@ export const MagazinePage = () => {
                 </section>
 
                 {/* Category Filter Buttons */}
-                <section className="flex justify-between">
-                    <p className="uppercase font-semibold">Categories</p>
+                <section className="flex justify-between items-center">
+                    <p className="font-semibold hidden vsm:block">Categories</p>
                     <span className="flex gap-2">
                         {categories.map(category => (
                             <button
@@ -65,10 +65,11 @@ export const MagazinePage = () => {
                                         alt={magazine.title}
                                         className="w-full h-96 object-cover rounded-lg mb-4"
                                     />
-                                    <h3 className="font-bold text-2xl mb-2 uppercase">{magazine.title}</h3>
+                                    <h3 className="font-bold text-2xl mb-2 uppercase line-clamp-1">{magazine.title}</h3>
                                     <p className="text-sm mb-4 text-justify line-clamp-3 text-secondaryColor/80">{magazine.description}</p>
-                                    <div className="flex justify-between text-sm">
-                                        <p><span className="font-bold">Text</span> {magazine.meta.author}</p>
+                                    <div className="flex flex-col xl:flex-row gap-2 justify-between text-sm">
+                                        <p><span className="font-bold">Author</span> {magazine.meta.author}</p>
+                                        <p><span className="font-bold">Date</span> {magazine.meta.date}</p>
                                         <p><span className="font-bold">Duration</span> {magazine.meta.readTime}</p>
                                     </div>
                                 </div>

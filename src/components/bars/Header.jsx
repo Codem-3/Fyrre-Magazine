@@ -10,7 +10,7 @@ export const Header = (props) => {
     };
 
     return (
-        <header className="mt-12 mx-5 xl:mx-20 dark:bg-darkPrimaryColor dark:text-darkSecondaryColor">
+        <header className="mt-6 sm:mt-12 mx-5 xl:mx-20 dark:bg-darkPrimaryColor dark:text-darkSecondaryColor">
             <main className="flex justify-between items-center mb-4">
                 {/* Logo */}
                 <p className="uppercase text-2xl font-bold">Fyrre Magazine</p>
