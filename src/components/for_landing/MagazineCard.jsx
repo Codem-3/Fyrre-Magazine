@@ -18,7 +18,7 @@ export const MagazineCard = () => {
                                 <Link to={`/magazine/${cardItem.id}`} className="block">
                                     <div key={idx} className="flex flex-col md:flex-row md:gap-10">
                                         <div className="md:w-96 h-72 flex-shrink-0">
-                                            <img src={cardItem.image.src} alt={cardItem.title} className="w-full h-full object-cover rounded" />
+                                            <img src={cardItem.image.src} alt={cardItem.title} className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300" />
                                         </div>
                                         <span className="flex flex-col justify-between py-5">
                                             {/* Magazine Title & Description */}

@@ -29,7 +29,7 @@ export const MagazineDetailsPage = () => {
                     <img
                         src={magazine.image.src}
                         alt={magazine.title}
-                        className="w-full lg:w-96 h-96 object-cover rounded-lg"
+                        className="w-full lg:w-96 h-96 object-cover rounded-lg hover:scale-105 transition-all duration-300"
                     />
                     <div className="flex items-center justify-between w-full mt-5 border-t-2 border-secondaryColor/30 pt-4">
                         <h2 className="tiny:text-xl font-semibold uppercase">Follow</h2>
@@ -73,7 +73,7 @@ export const MagazineDetailsPage = () => {
                                         <img
                                             src={relatedArticle.image.src}
                                             alt={relatedArticle.title}
-                                            className="w-full h-full object-cover rounded"
+                                            className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300"
                                         />
                                     </div>
                                     <div className="text-center">

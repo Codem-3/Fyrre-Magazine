@@ -63,7 +63,7 @@ export const MagazinePage = () => {
                                     <img
                                         src={magazine.image.src}
                                         alt={magazine.title}
-                                        className="w-full h-96 object-cover rounded-lg mb-4"
+                                        className="w-full h-96 object-cover rounded-lg mb-4 hover:scale-105 transition-all duration-300"
                                     />
                                     <h3 className="font-bold text-2xl mb-2 uppercase line-clamp-1">{magazine.title}</h3>
                                     <p className="text-sm mb-4 text-justify line-clamp-3 text-secondaryColor/80">{magazine.description}</p>

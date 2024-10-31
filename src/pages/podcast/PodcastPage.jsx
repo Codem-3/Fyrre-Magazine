@@ -31,7 +31,7 @@ export const PodcastPage = () => {
                                     <img
                                         src={podcast.image}
                                         alt={podcast.title}
-                                        className="w-full h-full object-cover rounded"
+                                        className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300"
                                     />
                                     <span className="absolute text-primaryColor right-5 bottom-5">
                                         <ArrowIcon />

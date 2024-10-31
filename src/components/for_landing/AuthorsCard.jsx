@@ -27,7 +27,7 @@ export const AuthorsCard = () => {
                                 <img
                                     src={authors.image}
                                     alt={authors.title}
-                                    className="w-full h-full object-center object-cover rounded-full shadow-xl"
+                                    className="w-full h-full object-center object-cover rounded-full shadow-xl hover:scale-110 transition-all duration-300"
                                 />
                             </div>
                             <span className="flex flex-col justify-between items-center py-5">

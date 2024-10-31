@@ -21,7 +21,7 @@ export const Header = (props) => {
                     <div className={`h-1 w-8 bg-current transition-all ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
                 </div>
                 {/* Navigation */}
-                <ul className={`flex md:flex gap-6 items-center text-xl ${isMenuOpen ? "flex-col md:flex-row absolute md:static bg-white md:bg-transparent shadow-2xl md:shadow-none z-10 top-20 right-5 p-5 border border-secondaryColor" : "hidden md:flex"}`}>
+                <ul className={`flex md:flex gap-6 items-center text-xl ${isMenuOpen ? "flex-col md:flex-row absolute md:static bg-white md:bg-transparent shadow-2xl md:shadow-none top-20 right-5 p-5 border border-secondaryColor z-50" : "hidden md:flex"}`}>
                     <Link to={props.FirstNavLink} className="hover:underline transition-all hover:text-[#B17457] duration-300">
                         <li>{props.FirstNav}</li>
                     </Link>
