@@ -24,9 +24,9 @@ export const AuthorsCard = () => {
             </header>
 
             {/* Authors Data Card */}
-            <div className="flex flex-wrap xl:justify-between justify-center gap-5">
+            <div className="flex flex-wrap justify-center gap-5">
                 {data.profiles.slice(0, 4).map((authors, index) => (
-                    <section key={index} className="p-2">
+                    <section key={index} className="p-2 mx-auto">
                         <Link to={`/authors/${authors.id}`} className="block">
                             <div className="relative w-64 h-64 mb-5">
                                 <img
