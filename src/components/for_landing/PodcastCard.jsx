@@ -41,7 +41,7 @@ export const PodcastCard = () => {
                                     <p className="font-bold text-2xl vsm:text-3xl max-w-96 mb-8 capitalize">{podcast.title}</p>
                                     {/* Podcast Details */}
                                     <div className="flex justify-between items-center">
-                                        <span className="flex text-sm gap-6">
+                                        <span className="flex flex-col xl:flex-row text-sm gap-6">
                                             <p><span className="font-bold">Date</span> {podcast.date}</p>
                                             <p><span className="font-bold">Duration</span> {podcast.duration}</p>
                                         </span>

@@ -28,9 +28,9 @@ export const MagazineCard = () => {
                                             </div>
                                             {/* Magazine Details */}
                                             <div className="flex justify-between items-center">
-                                                <span className="flex text-sm gap-6">
+                                                <span className="flex flex-col xl:flex-row text-sm gap-2">
                                                     <p><span className="font-bold">Text</span> {cardItem.meta.author}</p>
-                                                    <p className="hidden vsm:block"><span className="font-bold">Date</span> {cardItem.meta.date}</p>
+                                                    <p><span className="font-bold">Date</span> {cardItem.meta.date}</p>
                                                     <p><span className="font-bold">Read</span> {cardItem.meta.readTime}</p>
                                                 </span>
                                                 <button className="uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">{categoryItem.category}</button>
