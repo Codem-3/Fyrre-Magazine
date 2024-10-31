@@ -4,13 +4,21 @@
 **Fyrre Magazine** is a dynamic magazine website built using **React**, **Vite**, and **Tailwind CSS**. The platform features a clean and modern design, providing users with an engaging experience to explore various magazines, podcasts, and authors.
 
 <div  align="center">
-
-## Fyrre Magazine
+ 
+![Logo](https://github.com/user-attachments/assets/c7366f15-b7ce-428a-974e-2959a537c33b)
 </div>
 
 ## Project Overview 📖
 
 **Fyrre Magazine** aims to offer a diverse range of content that includes a variety of magazines, podcasts, and authors. The site is designed to facilitate easy access to information and inspiration across different fields. Users can view detailed information about each magazine, podcast, or author, allowing them to broaden their horizons and discover new content. The site also provides organizational tools such as sorting and filtering options, enhancing the user experience by making it easier to find what they're looking for. 🔍
+
+## Features ✨
+
+- **User-Friendly Navigation:** Access various sections, including magazines, podcasts, and authors.
+- **Dynamic Content:** Data is managed through a JSON file, ensuring easy updates and scalability.
+- **Sorting and Filtering:** Sort and filter options for organizing content based on selected categories.
+- **Dark Theme:** Users can toggle between light and dark themes for a personalized experience. 🌙
+- **Responsive Design:** Fully responsive design that adapts seamlessly to all device sizes. 📱💻
 
 ## Screenshots
 
@@ -40,14 +48,6 @@
     <td><img width='320px' src="https://github.com/user-attachments/assets/45efed36-be0c-46ad-85cd-d1e2e05d5085" alt="Image" /></td>
   </tr>
 </table>
-
-## Features ✨
-
-- **User-Friendly Navigation:** Access various sections, including magazines, podcasts, and authors.
-- **Dynamic Content:** Data is managed through a JSON file, ensuring easy updates and scalability.
-- **Sorting and Filtering:** Sort and filter options for organizing content based on selected categories.
-- **Dark Theme:** Users can toggle between light and dark themes for a personalized experience. 🌙
-- **Responsive Design:** Fully responsive design that adapts seamlessly to all device sizes. 📱💻
 
 ## Pages 🗂️
 
