@@ -79,8 +79,8 @@ export const MagazineDetailsPage = () => {
                                     <div className="text-center">
                                         <h3 className="text-3xl font-bold">{relatedArticle.title}</h3>
                                         <div className="flex justify-center text-sm gap-10 mt-2">
-                                            <span><strong>Date:</strong> {relatedArticle.meta.date}</span>
-                                            <span><strong>Read:</strong> {relatedArticle.meta.readTime}</span>
+                                            <span><strong>Date</strong> {relatedArticle.meta.date}</span>
+                                            <span><strong>Read</strong> {relatedArticle.meta.readTime}</span>
                                         </div>
                                     </div>
                                 </div>

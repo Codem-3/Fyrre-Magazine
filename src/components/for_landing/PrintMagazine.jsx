@@ -1,43 +1,53 @@
 import React from 'react'
+// Image
 import CoverMagazine from '@/assets/images/for_landing/magazin-cover.png'
 
 export const PrintMagazine = () => {
+
+    const styles = {
+        ContainerStyle: `flex gap-4`,
+        titleStyle: `font-bold text-2xl mb-2 capitalize`,
+        numberStyle: `font-bold text-2xl`,
+        hrStyle: `border border-black/20 my-6`,
+        buttonStyle: `bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-5 py-3 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300`,
+    }
+
     return (
         <aside>
             <p className="uppercase font-semibold mb-2">available Soon</p>
             <p className="font-semibold text-5xl mb-8">03/2025</p>
             <img src={CoverMagazine} alt="Cover Magazine" className="min-w-64 mb-4 hover:scale-105 transition-all duration-300" />
-            <button className="bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-6 py-4 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300">Book</button>
+            <button className={styles.buttonStyle}>Book</button>
 
             {/* Most Popular */}
             <section className="my-12">
                 <p className="uppercase font-semibold mb-8">Most Popular</p>
 
-                <div className="flex gap-4">
-                    <p className="font-bold text-2xl">01</p>
+                <h3 className={styles.ContainerStyle}>
+                    <p className={styles.numberStyle}>01</p>
                     <span>
-                        <p className="font-bold text-2xl mb-2 capitalize">Street art festival</p>
+                        <p className={styles.titleStyle}>Street art festival</p>
                         <p className="text-sm"><span className="font-bold">Text</span> Mohamed Sayed</p>
                     </span>
-                </div>
-                <hr className="border border-black/20 my-6" />
+                </h3>
+                <hr className={styles.hrStyle} />
 
-                <div className="flex gap-4">
-                    <p className="font-bold text-2xl">02</p>
+                <h3 className={styles.ContainerStyle}>
+                    <p className={styles.numberStyle}>02</p>
                     <span>
-                        <p className="font-bold text-2xl mb-2 capitalize">Hope dies last</p>
+                        <p className={styles.titleStyle}>Hope dies last</p>
                         <p className="text-sm"><span className="font-bold">Text</span> Anne Henry</p>
                     </span>
-                </div>
-                <hr className="border border-black/20 my-6" />
+                </h3>
+                <hr className={styles.hrStyle} />
 
-                <div className="flex gap-4">
-                    <p className="font-bold text-2xl">03</p>
+                <h3 className={styles.ContainerStyle}>
+                    <p className={styles.numberStyle}>03</p>
                     <span>
-                        <p className="font-bold text-2xl mb-2 capitalize">Artists who want to rise above</p>
+                        <p className={styles.titleStyle}>Artists who want to rise above</p>
                         <p className="text-sm"><span className="font-bold">Text</span> Anna Nielsen</p>
                     </span>
-                </div>
+                </h3>
             </section>
 
             {/* News Letter */}
@@ -46,7 +56,7 @@ export const PrintMagazine = () => {
                 <p className="text-2xl font-bold mb-4">Design News to your inbox</p>
                 <input placeholder="example@gmail.com" className="px-2 py-2 w-full mb-3" />
                 <div className="flex justify-end">
-                    <button className="bg-secondaryColor text-primaryColor uppercase font-medium text-sm px-5 py-3 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300">Sign up</button>
+                    <button className={styles.buttonStyle}>Sign up</button>
                 </div>
             </section>
 

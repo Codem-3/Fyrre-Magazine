@@ -6,6 +6,11 @@ import { RightArrowIcon, ArrowIcon } from '@/utils/icons.util';
 import data from '@/data/Podcast.json'
 
 export const PodcastCard = () => {
+
+    const styles = {
+        BoldStyle: `font-bold`,
+    }
+
     return (
         <main className="mx-5 xl:mx-20 border-t border-secondaryColor">
 
@@ -24,11 +29,13 @@ export const PodcastCard = () => {
                     <section key={index} className="p-4 vsm:p-7 border border-secondaryColor">
                         <Link to={`/podcast/${podcast.id}`} className="block">
                             <div div className="flex-col" >
+
+                                {/* Image Container Style */}
                                 <div className="relative vsm:w-96 h-96 flex-shrink-0 mb-5">
                                     <img
                                         src={podcast.image}
                                         alt={podcast.title}
-                                        className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300"
+                                        className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300 shadow-xl"
                                     />
                                     <span className="absolute text-primaryColor right-5 bottom-5">
                                         <ArrowIcon />
@@ -36,24 +43,25 @@ export const PodcastCard = () => {
                                     <p className="absolute uppercase text-primaryColor text-2xl font-bold left-5 top-5"><span className="text-5xl block">Fyrre</span>Podcast</p>
                                     <p className="absolute text-primaryColor text-2xl font-bold left-5 bottom-5">{podcast.episode}</p>
                                 </div>
+
                                 <span className="flex flex-col justify-between py-5">
                                     {/* Podcast Title & Description */}
                                     <p className="font-bold text-2xl vsm:text-3xl max-w-96 mb-8 capitalize">{podcast.title}</p>
                                     {/* Podcast Details */}
                                     <div className="flex justify-between items-center">
                                         <span className="flex flex-col xl:flex-row text-sm gap-6">
-                                            <p><span className="font-bold">Date</span> {podcast.date}</p>
-                                            <p><span className="font-bold">Duration</span> {podcast.duration}</p>
+                                            <p><span className={styles.BoldStyle}>Date</span> {podcast.date}</p>
+                                            <p><span className={styles.BoldStyle}>Duration</span> {podcast.duration}</p>
                                         </span>
                                     </div>
                                 </span>
+
                             </div>
                         </Link>
                     </section>
                 ))
                 }
             </div>
-
         </main>
     )
 }

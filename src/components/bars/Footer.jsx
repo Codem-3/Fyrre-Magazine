@@ -5,6 +5,12 @@ import { NewsBar } from '@/components'
 import { InstagramIcon, TwitterIcon, WifiIcon, YoutubeIcon } from '@/utils/icons.util'
 
 export const Footer = () => {
+
+    const styles = {
+        HoverTransition: `hover:scale-125 transition-all duration-300 hover:text-[#B17457] cursor-pointer text-center`,
+        ulStyle: `flex flex-col gap-3`,
+    }
+
     return (
         <footer className="bg-secondaryColor text-primaryColor overflow-hidden">
             <NewsBar />
@@ -22,20 +28,20 @@ export const Footer = () => {
             <section className="flex sm:flex-row flex-col justify-center items-center gap-5 sm:justify-between sm:items-baseline my-8 sm:mb-20 mx-5 xl:mx-20">
                 <p className="uppercase text-xl font-bold">Fyrre Magazine</p>
                 <span className="flex gap-10 lg:gap-56">
-                    <ul className="flex flex-col gap-3">
-                        <li>Art</li>
-                        <li>Design</li>
-                        <li>Architecture</li>
+                    <ul className={styles.ulStyle}>
+                        <li className={styles.HoverTransition}>Art & Life</li>
+                        <li className={styles.HoverTransition}>Design</li>
+                        <li className={styles.HoverTransition}>Architecture</li>
                     </ul>
                     <ul className="hidden vsm:flex flex-col gap-3">
-                        <li>Magazine</li>
-                        <li>Podcast</li>
-                        <li>Authors</li>
+                        <li className={styles.HoverTransition}>Magazine</li>
+                        <li className={styles.HoverTransition}>Podcast</li>
+                        <li className={styles.HoverTransition}>Authors</li>
                     </ul>
-                    <ul className="flex flex-col gap-3">
-                        <li>StyleGuide</li>
-                        <li>Licensing</li>
-                        <li>Changelog</li>
+                    <ul className={styles.ulStyle}>
+                        <li className={styles.HoverTransition}>StyleGuide</li>
+                        <li className={styles.HoverTransition}>Licensing</li>
+                        <li className={styles.HoverTransition}>Changelog</li>
                     </ul>
                 </span>
             </section>
@@ -48,7 +54,7 @@ export const Footer = () => {
                     {[InstagramIcon, TwitterIcon, YoutubeIcon, WifiIcon].map((Icon, idx) => (
                         <span
                             key={idx}
-                            className="hover:scale-125 transition-all duration-300 hover:text-[#B17457] cursor-pointer"
+                            className={styles.HoverTransition}
                         >
                             <Icon />
                         </span>

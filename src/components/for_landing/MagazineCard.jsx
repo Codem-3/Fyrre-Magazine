@@ -1,14 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-// Database
+// Data
 import data from '@/data/Magazine.json'
 // Icons
 import { RightArrowIcon } from '@/utils/icons.util'
 
 export const MagazineCard = () => {
+
+    const styles = {
+        BoldStyle: `font-bold`,
+    }
+
     return (
         <main>
 
+            {/* Magazine */}
             {data.cards.map((categoryItem, index) => (
                 <section key={index}>
                     <div className="mb-12">
@@ -23,15 +29,15 @@ export const MagazineCard = () => {
                                         <span className="flex flex-col justify-between py-5">
                                             {/* Magazine Title & Description */}
                                             <div>
-                                                <p className="font-bold text-3xl">{cardItem.title}</p>
+                                                <p className={`${styles.BoldStyle} text-3xl`}>{cardItem.title}</p>
                                                 <p className="mt-3 line-clamp-5 my-5 text-sm vsm:text-base">{cardItem.description}</p>
                                             </div>
                                             {/* Magazine Details */}
                                             <div className="flex justify-between items-center">
                                                 <span className="flex flex-col xl:flex-row text-sm gap-2">
-                                                    <p><span className="font-bold">Text</span> {cardItem.meta.author}</p>
-                                                    <p><span className="font-bold">Date</span> {cardItem.meta.date}</p>
-                                                    <p><span className="font-bold">Read</span> {cardItem.meta.readTime}</p>
+                                                    <p><span className={styles.BoldStyle}>Text</span> {cardItem.meta.author}</p>
+                                                    <p><span className={styles.BoldStyle}>Date</span> {cardItem.meta.date}</p>
+                                                    <p><span className={styles.BoldStyle}>Read</span> {cardItem.meta.readTime}</p>
                                                 </span>
                                                 <button className="uppercase px-3 py-2 border border-black rounded-full text-xs hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300">{categoryItem.category}</button>
                                             </div>

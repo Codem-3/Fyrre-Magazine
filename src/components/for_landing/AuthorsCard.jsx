@@ -6,6 +6,11 @@ import { RightArrowIcon } from '@/utils/icons.util';
 import data from '@/data/Authors.json'
 
 export const AuthorsCard = () => {
+
+    const styles = {
+        detailsStyle: `font-bold text-lg`,
+    }
+
     return (
         <main className="my-10 mx-5 xl:mx-20 border-t border-secondaryColor">
 
@@ -30,21 +35,22 @@ export const AuthorsCard = () => {
                                     className="w-full h-full object-center object-cover rounded-full shadow-xl hover:scale-110 transition-all duration-300"
                                 />
                             </div>
+
                             <span className="flex flex-col justify-between items-center py-5">
                                 {/* Authors Title & Description */}
                                 <p className="font-bold text-2xl vsm:text-4xl max-w-96 mb-8">{authors.name}</p>
                                 {/* Authors Details */}
                                 <div className="flex justify-between items-center">
                                     <span className="flex text-sm gap-6">
-                                        <p><span className="font-bold text-lg">Job</span> {authors.job}</p>
-                                        <p><span className="font-bold text-lg">City</span> {authors.city}</p>
+                                        <p><span className={styles.detailsStyle}>Job</span> {authors.job}</p>
+                                        <p><span className={styles.detailsStyle}>City</span> {authors.city}</p>
                                     </span>
                                 </div>
                             </span>
+
                         </Link>
                     </section>
-                ))
-                }
+                ))}
             </div>
 
         </main>
