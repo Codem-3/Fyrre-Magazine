@@ -1,7 +1,12 @@
 
 # Fyrre Magazine 🌟
 
-**Fyrre Magazine** is a dynamic magazine website built using **React**, **Vite**, and **Tailwind CSS**. The platform features a clean and modern design, providing users with an engaging experience to explore various magazines, podcasts, and authors. 🎉
+**Fyrre Magazine** is a dynamic magazine website built using **React**, **Vite**, and **Tailwind CSS**. The platform features a clean and modern design, providing users with an engaging experience to explore various magazines, podcasts, and authors.
+
+<div  align="center">
+
+## Fyrre Magazine
+</div>
 
 ## Project Overview 📖
 
@@ -11,24 +16,28 @@
 
  <table align="center">
   <tr align='center'>
-    <td><img src="" alt="Image" /></td>
-    <td><img src="" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/e2e2a4c0-55ec-405f-8ca6-817110cb2872" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/b728195c-7716-4ac7-8f9a-ca7adae04b33" alt="Image" /></td>
   </tr>
   <tr align='center'>
-    <td><img src="" alt="Image" /></td>
-    <td><img src="" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/7bb9379c-1521-49ad-9cd8-31550803e8a1" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/db840eaf-f8bd-4692-ba90-e480978d36a1" alt="Image" /></td>
   </tr>
   <tr align='center'>
-    <td><img src="" alt="Image" /></td>
-    <td><img src="" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/fbd773cb-ffb5-4b64-97c4-5d66407f8a54" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/02191cea-3be1-4669-af3d-05d0d3ca3bc1" alt="Image" /></td>
   </tr>
   <tr align='center'>
-    <td><img src="" alt="Image" /></td>
-    <td><img src="" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/948d59ae-c280-44eb-8ac0-47fb5ea63318" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/af21c93b-c793-494e-ad72-7ef61b29204f" alt="Image" /></td>
   </tr>
   <tr align='center'>
-    <td><img width='320px' src="" alt="Image" /></td>
-    <td><img width='320px' src="" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ae5c1a2f-1848-467a-9ae1-e142c68e965f" alt="Image" /></td>
+    <td><img src="https://github.com/user-attachments/assets/016f28bd-0e3e-4a45-8347-c3163bf8f17e" alt="Image" /></td>
+  </tr>
+  <tr align='center'>
+    <td><img width='320px' src="https://github.com/user-attachments/assets/ed78e829-d12b-4aef-8f07-fe8173fba75c" alt="Image" /></td>
+    <td><img width='320px' src="https://github.com/user-attachments/assets/45efed36-be0c-46ad-85cd-d1e2e05d5085" alt="Image" /></td>
   </tr>
 </table>
 
