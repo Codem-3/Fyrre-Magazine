@@ -49,24 +49,25 @@ export const MagazineDetailsPage = () => {
                 <section className="flex flex-col gap-5">
                     <h1 className="text-4xl vsm:text-7xl font-bold capitalize">{magazine.title}</h1>
                     <p className="italic text-secondaryColor/60 text-sm vsm:text-base">{magazine.meta.date}</p>
-                    <p>{magazine.description}</p>
-                    <p className="text-secondaryColor/60 text-sm vsm:text-base">{magazine.description.repeat(10)}</p>
-                    <div className="flex justify-between text-sm mt-4">
-                        <p><strong>Author:</strong> {magazine.meta.author}</p>
-                        <p><strong>Duration:</strong> {magazine.meta.readTime}</p>
+                    <p>{magazine.sub_description}</p>
+                    <p className="text-secondaryColor/60 text-sm vsm:text-base">{magazine.description}</p>
+                    <div className="flex flex-col xl:flex-row gap-2 justify-between text-sm">
+                        <p><strong>Author</strong> {magazine.meta.author}</p>
+                        <p><strong>Date</strong> {magazine.meta.date}</p>
+                        <p><strong>Duration</strong> {magazine.meta.readTime}</p>
                     </div>
                 </section>
             </main>
 
             <hr className="border-secondaryColor m-5 xl:m-20" />
 
-            {/* Related Articles */}
+            {/* Latest Posts */}
             <section className="mx-5 xl:mx-20">
                 <h2 className="text-4xl vsm:text-5xl font-bold mb-10">Latest Posts</h2>
-                <div className="flex flex-wrap justify-between">
+                <div className="flex flex-wrap justify-center gap-3">
                     {data.cards.flatMap(category => category.card).slice(0, 3).map((relatedArticle, idx) => (
                         relatedArticle.id !== magazine.id && (
-                            <article key={idx} className="w-[410px] mb-10">
+                            <article key={idx} className="w-full md:w-[410px] mb-10 mx-auto">
                                 <div className="flex flex-col gap-5">
                                     <div className="w-full h-64">
                                         <img
