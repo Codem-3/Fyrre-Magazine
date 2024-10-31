@@ -1,5 +1,5 @@
 
-# Fyrre Magazine 🌟
+# Fyrre Magazine 🗞️
 
 **Fyrre Magazine** is a dynamic magazine website built using **React**, **Vite**, and **Tailwind CSS**. The platform features a clean and modern design, providing users with an engaging experience to explore various magazines, podcasts, and authors.
 
