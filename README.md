@@ -57,6 +57,11 @@
   </tr>
 </table>
 
+## Screen Record ⏺️
+
+https://github.com/user-attachments/assets/74cf14a1-807f-4740-ab5f-172b3d40330d
+
+
 ## Pages 🗂️
 
 The project consists of **7 main pages**:
