@@ -39,6 +39,7 @@ export const Header = (props) => {
 
     const styles = {
         linkStyle: `transition-all hover:text-[#B17457] duration-300`,
+        hoverStyle: `hover:scale-125 transition-all duration-300 hover:text-[#B17457] cursor-pointer`
     }
 
     return (
@@ -76,14 +77,14 @@ export const Header = (props) => {
                         {[InstagramIcon, TwitterIcon, YoutubeIcon, WifiIcon].map((Icon, idx) => (
                             <span
                                 key={idx}
-                                className="hover:scale-125 transition-all duration-300 hover:text-[#B17457] cursor-pointer"
+                                className={styles.hoverStyle}
                             >
                                 <Icon />
                             </span>
                         ))}
                     </div>
 
-                    <div onClick={toggleDarkMode}>
+                    <div onClick={toggleDarkMode} className={styles.hoverStyle}>
                         {darkMode ? <BiMoon /> : <BsSun />}
                     </div>
 

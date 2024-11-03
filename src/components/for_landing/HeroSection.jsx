@@ -2,7 +2,7 @@ import React from 'react'
 // Component
 import { BreakNews } from '@/components'
 // Images
-import CloseEyes from '@/assets/images/for_landing/closeEyes.jfif'
+import CloseEyes from '@/assets/images/for_landing/closeEyes.webp'
 // Icons
 import { TitleIcon } from '@/utils/icons.util'
 
