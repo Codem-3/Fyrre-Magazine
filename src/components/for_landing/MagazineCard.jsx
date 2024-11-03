@@ -20,7 +20,7 @@ export const MagazineCard = () => {
                     <div className="mb-12">
                         {/* Get only to card form each Category */}
                         {categoryItem.card.slice(0, 2).map((cardItem, idx) => (
-                            <span>
+                            <span key={cardItem.title}>
                                 <Link to={`/magazine/${cardItem.id}`} className="block">
                                     <div key={idx} className="flex flex-col md:flex-row md:gap-10">
                                         <div className="md:w-96 h-72 flex-shrink-0">
