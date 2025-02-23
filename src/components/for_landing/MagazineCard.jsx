@@ -1,19 +1,13 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
-// Data
-import data from '@/data/Magazine.json'
-// Icons
-import { RightArrowIcon } from '@/utils/icons.util'
+import data from '@/data/Magazine.json' // Data
+import { RightArrowIcon } from '@/utils/icons.util' // Icons
 
+const styles = {
+    BoldStyle: `font-bold`,
+}
 export const MagazineCard = () => {
-
-    const styles = {
-        BoldStyle: `font-bold`,
-    }
-
     return (
         <main>
-
             {/* Magazine */}
             {data.cards.map((categoryItem, index) => (
                 <section key={index}>
@@ -60,7 +54,6 @@ export const MagazineCard = () => {
                 <p className="uppercase font-bold">All articles</p>
                 <RightArrowIcon />
             </Link>
-
         </main>
     )
 }

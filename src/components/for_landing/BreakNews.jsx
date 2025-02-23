@@ -1,11 +1,10 @@
-import React from 'react'
+const styles = {
+    ContainerStyle: `flex items-center bg-secondaryColor dark:bg-primaryColor text-primaryColor dark:text-secondaryColor overflow-hidden`,
+    BreakingStyle: `text-nowrap font-semibold px-2 py-2 sm:p-5 bg-primaryColor dark:bg-secondaryColor text-secondaryColor border-2 border-secondaryColor dark:border-primaryColor dark:text-primaryColor z-10`,
+    ParagraphStyle: `flex gap-3 whitespace-nowrap animate-marquee`,
+}
 
 export const BreakNews = () => {
-    const styles = {
-        ContainerStyle: `flex items-center bg-secondaryColor dark:bg-primaryColor text-primaryColor dark:text-secondaryColor overflow-hidden`,
-        BreakingStyle: `text-nowrap font-semibold px-2 py-2 sm:p-5 bg-primaryColor dark:bg-secondaryColor text-secondaryColor border-2 border-secondaryColor dark:border-primaryColor dark:text-primaryColor z-10`,
-        ParagraphStyle: `flex gap-3 whitespace-nowrap animate-marquee`,
-    }
     return (
         <main className={styles.ContainerStyle}>
             <div className={styles.BreakingStyle}><p className="animate-pulse">Breaking News</p></div>

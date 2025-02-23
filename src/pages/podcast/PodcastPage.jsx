@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 // Components
 import { Header, Footer } from '@/components'
@@ -9,7 +8,7 @@ import data from '@/data/Podcast.json'
 
 export const PodcastPage = () => {
     return (
-        <Fragment>
+        <>
             <Header
                 FirstNav="Home" FirstNavLink="/"
                 SecondNav="Magazine" SecondNavLink="/magazine"
@@ -68,6 +67,6 @@ export const PodcastPage = () => {
 
             </main>
             <Footer />
-        </Fragment>
+        </>
     )
 }

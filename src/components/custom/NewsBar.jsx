@@ -1,7 +1,7 @@
+const styles = {
+    ContainerStyle: `flex gap-6 text-xl font-medium whitespace-nowrap animate-marquee my-5`,
+}
 export const NewsBar = () => {
-    const styles = {
-        ContainerStyle: `flex gap-6 text-xl font-medium whitespace-nowrap animate-marquee my-5`,
-    }
     return (
         <article className={styles.ContainerStyle}>
             <span>New AI-Powered Tool Transforms Web Development!</span>

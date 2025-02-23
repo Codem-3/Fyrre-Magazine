@@ -1,19 +1,16 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 // Icons
 import { RightArrowIcon, ArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Podcast.json'
 
+const styles = {
+    BoldStyle: `font-bold`,
+}
+
 export const PodcastCard = () => {
-
-    const styles = {
-        BoldStyle: `font-bold`,
-    }
-
     return (
         <main className="mx-5 xl:mx-20 border-t border-secondaryColor dark:border-primaryColor">
-
             {/* Header*/}
             <header className="flex flex-col tiny:flex-row gap-3 justify-between items-center mt-12 mb-16">
                 <p className="text-4xl sm:text-7xl font-bold uppercase">Podcast</p>

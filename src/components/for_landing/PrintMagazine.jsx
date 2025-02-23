@@ -1,17 +1,15 @@
-import React from 'react'
 // Image
 import CoverMagazine from '@/assets/images/for_landing/magazin-cover.png'
 
+const styles = {
+    ContainerStyle: `flex gap-4`,
+    titleStyle: `font-bold text-2xl mb-2 capitalize`,
+    numberStyle: `font-bold text-2xl`,
+    hrStyle: `border border-black/20 dark:border-primaryColor my-6`,
+    buttonStyle: `bg-secondaryColor dark:bg-primaryColor text-primaryColor dark:text-secondaryColor uppercase font-medium text-sm px-5 py-3 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300`,
+}
+
 export const PrintMagazine = () => {
-
-    const styles = {
-        ContainerStyle: `flex gap-4`,
-        titleStyle: `font-bold text-2xl mb-2 capitalize`,
-        numberStyle: `font-bold text-2xl`,
-        hrStyle: `border border-black/20 dark:border-primaryColor my-6`,
-        buttonStyle: `bg-secondaryColor dark:bg-primaryColor text-primaryColor dark:text-secondaryColor uppercase font-medium text-sm px-5 py-3 hover:bg-[#ECC584] hover:text-secondaryColor transition-all duration-300`,
-    }
-
     return (
         <aside>
             <p className="uppercase font-semibold mb-2">available Soon</p>
@@ -54,12 +52,11 @@ export const PrintMagazine = () => {
             <section className="bg-[#F8F8F8] dark:bg-secondaryColor p-5">
                 <p className="uppercase font-semibold mb-2">News Letter</p>
                 <p className="text-2xl font-bold mb-4">Design News to your inbox</p>
-                <input placeholder="example@gmail.com" className="px-2 py-2 w-full mb-3" />
+                <input placeholder="example@gmail.com" className="px-2 py-2 w-full mb-3 outline-none text-black" />
                 <div className="flex justify-end">
                     <button className={styles.buttonStyle}>Sign up</button>
                 </div>
             </section>
-
         </aside>
     )
 }

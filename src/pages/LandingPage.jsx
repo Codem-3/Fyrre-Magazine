@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react'
 // components
 import { Header, Footer, HeroSection, MagazineCard, PrintMagazine, AuthorsCard, PodcastCard } from '@/components'
 
 export const LandingPage = () => {
     return (
-        <Fragment>
+        <>
             <Header
                 FirstNav="Magazine" FirstNavLink="/magazine"
                 SecondNav="Authors" SecondNavLink="/authors"
@@ -22,6 +21,6 @@ export const LandingPage = () => {
             <PodcastCard />
             <AuthorsCard />
             <Footer />
-        </Fragment>
+        </>
     )
 }

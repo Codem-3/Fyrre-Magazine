@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 // Components
 import { Header, Footer } from '@/components';
@@ -6,6 +5,13 @@ import { Header, Footer } from '@/components';
 import { InstagramIcon, TwitterIcon, YoutubeIcon, ArrowIcon, AppleIcon, CloudIcon, SpotifyIcon } from '@/utils/icons.util';
 // Data
 import data from '@/data/Podcast.json';
+
+const styles = {
+    ContainerStyle: `mx-5 xl:mx-20 my-10 flex flex-col lg:flex-row gap-10 vsm:gap-12`,
+    detailsStyle: `flex items-center justify-between w-full mt-2 lg:mt-5`,
+    h2Style: `text-xl font-semibold`,
+    italicStyle: `italic text-secondaryColor/60 dark:text-primaryColor/60 text-sm vsm:text-base`,
+}
 
 export const PodcastDetailsPage = () => {
     const { id } = useParams();
@@ -15,15 +21,8 @@ export const PodcastDetailsPage = () => {
         return <p>Podcast not found</p>;
     }
 
-    const styles = {
-        ContainerStyle: `mx-5 xl:mx-20 my-10 flex flex-col lg:flex-row gap-10 vsm:gap-12`,
-        detailsStyle: `flex items-center justify-between w-full mt-2 lg:mt-5`,
-        h2Style: `text-xl font-semibold`,
-        italicStyle: `italic text-secondaryColor/60 dark:text-primaryColor/60 text-sm vsm:text-base`,
-    }
-
     return (
-        <Fragment>
+        <>
             <Header
                 FirstNav="Home" FirstNavLink="/"
                 SecondNav="Magazine" SecondNavLink="/magazine"
@@ -97,6 +96,6 @@ export const PodcastDetailsPage = () => {
 
             </main>
             <Footer />
-        </Fragment>
+        </>
     );
 }

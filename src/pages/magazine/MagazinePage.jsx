@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // Components
 import { Header, Footer } from '@/components';
@@ -8,7 +8,6 @@ import { MagazineIcon } from '@/utils/icons.util';
 import data from '@/data/Magazine.json';
 
 export const MagazinePage = () => {
-
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     // Unique categories from data
@@ -28,7 +27,7 @@ export const MagazinePage = () => {
         : data.cards.filter(card => card.category === selectedCategory);
 
     return (
-        <Fragment>
+        <>
             <Header
                 FirstNav="Home" FirstNavLink="/"
                 SecondNav="Authors" SecondNavLink="/authors"
@@ -61,7 +60,7 @@ export const MagazinePage = () => {
                 <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
                     {filteredCards.map((categoryData) => (
                         categoryData.card.map(magazine => (
-                            <Link to={`/magazine/${magazine.id}`} >
+                            <Link to={`/magazine/${magazine.id}`} key={magazine.id}>
                                 <div key={magazine.id} className="border border-secondaryColor/30 dark:border-primaryColor/30 p-4 rounded-lg shadow-sm flex flex-col">
                                     <span className='flex justify-between items-center mb-4'>
                                         <p>{magazine.meta.date}</p>
@@ -89,6 +88,6 @@ export const MagazinePage = () => {
 
             </main>
             <Footer />
-        </Fragment>
+        </>
     );
 };

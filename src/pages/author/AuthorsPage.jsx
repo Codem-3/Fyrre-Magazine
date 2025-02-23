@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 // Components
 import { Header, Footer } from '@/components'
@@ -7,15 +6,14 @@ import { AuthorIcon, RightArrowIcon } from '@/utils/icons.util';
 // Data
 import data from '@/data/Authors.json'
 
+const styles = {
+    linkStyle: `flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center`,
+    imgStyle: `w-full h-full object-center object-cover rounded-lg hover:scale-105 transition-all duration-300`
+}
+
 export const AuthorsPage = () => {
-
-    const styles = {
-        linkStyle: `flex gap-2 transition-all hover:text-[#B17457] duration-300 items-center`,
-        imgStyle: `w-full h-full object-center object-cover rounded-lg hover:scale-105 transition-all duration-300`
-    }
-
     return (
-        <Fragment>
+        <>
             <Header
                 FirstNav="Home" FirstNavLink="/"
                 SecondNav="Magazine" SecondNavLink="/magazine"
@@ -65,6 +63,6 @@ export const AuthorsPage = () => {
 
             </main>
             <Footer />
-        </Fragment>
+        </>
     )
 }

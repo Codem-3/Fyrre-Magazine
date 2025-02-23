@@ -1,4 +1,3 @@
-import React from 'react'
 // Component
 import { NewsBar } from '@/components'
 // Icons
@@ -19,7 +18,7 @@ export const Footer = () => {
             <section className="flex md:flex-row flex-col gap-5 text-center md:text-left justify-between items-center uppercase my-8 sm:my-28 mx-5 xl:mx-20">
                 <p className="text-5xl sm:text-7xl font-semibold max-w-screen-sm leading-[110%]">Design News to your inbox</p>
                 <span className="flex gap-3">
-                    <input placeholder="example@mail.com" className="px-4 py-2 text-secondaryColor sm:w-80" defaultValue="mohamed.m.abdalfattah@gmail.com" />
+                    <input placeholder="example@mail.com" className="px-4 py-2 text-secondaryColor sm:w-80 outline" defaultValue="mohamed.m.abdalfattah@gmail.com" />
                     <button className="uppercase px-2 vsm:px-6 py-1 bg-primaryColor text-secondaryColor font-medium">Sign Up</button>
                 </span>
             </section>

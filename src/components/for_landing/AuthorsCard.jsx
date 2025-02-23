@@ -1,16 +1,14 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 // Icons
 import { RightArrowIcon } from '@/utils/icons.util';
 // Database 
 import data from '@/data/Authors.json'
 
+const styles = {
+    detailsStyle: `font-bold text-lg`,
+}
+
 export const AuthorsCard = () => {
-
-    const styles = {
-        detailsStyle: `font-bold text-lg`,
-    }
-
     return (
         <main className="my-10 mx-5 xl:mx-20 border-t border-secondaryColor dark:border-primaryColor">
 

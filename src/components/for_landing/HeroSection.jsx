@@ -1,18 +1,13 @@
-import React from 'react'
-// Component
-import { BreakNews } from '@/components'
-// Images
-import CloseEyes from '@/assets/images/for_landing/closeEyes.webp'
-// Icons
-import { TitleIcon } from '@/utils/icons.util'
+import { BreakNews } from '@/components' // Component
+import CloseEyes from '@/assets/images/for_landing/closeEyes.webp' // Images
+import { TitleIcon } from '@/utils/icons.util' // Icons
+
+const styles = {
+    ContainerStyle: `mx-5 xl:mx-20`,
+    BoldStyle: `font-bold`,
+}
 
 export const HeroSection = () => {
-
-    const styles = {
-        ContainerStyle: `mx-5 xl:mx-20`,
-        BoldStyle: `font-bold`,
-    }
-
     return (
         <main className={styles.ContainerStyle}>
             <header className="w-full flex justify-center my-12">
