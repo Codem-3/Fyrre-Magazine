@@ -25,7 +25,7 @@ export const PodcastCard = () => {
                 {data.podcasts.slice(0, 3).map((podcast, index) => (
                     <section key={index} className="p-4 vsm:p-7 border border-secondaryColor dark:border-primaryColor mx-auto">
                         <Link to={`/podcast/${podcast.id}`} className="block">
-                            <div div className="flex-col" >
+                            <div className="flex-col" >
 
                                 {/* Image Container Style */}
                                 <div className="relative vsm:w-96 h-96 flex-shrink-0 mb-5">

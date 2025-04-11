@@ -17,7 +17,7 @@ export const HeroSection = () => {
 
             {/* Hero Magazine */}
             <section className="flex lg:flex-row flex-col justify-between my-10 gap-3">
-                <p className="text-3xl tiny:text-5xl md:text-8xl font-semibold uppercase md:min-w-[640px]">Don't close your eyes</p>
+                <p className="text-3xl tiny:text-5xl md:text-8xl font-semibold uppercase md:min-w-[640px]">Don&apos;t close your eyes</p>
                 <span className="flex flex-col justify-between">
                     <p className="text-sm lg:text-lg text-justify line-clamp-4">Reflects on the fleeting moments of life and the importance of cherishing each experience, especially in relationships. The song conveys a sense of urgency, urging listeners to stay present and fully engage with their loved ones.</p>
                     <div className="flex justify-between items-center mt-4 xl:mt-0">
