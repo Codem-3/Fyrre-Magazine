@@ -6,9 +6,7 @@
     ":enableVulnerabilityAlertsWithLabel(security)"
   ],
   "timezone": "Europe/Berlin",
-  "schedule": [
-    "before 6am on Sunday"
-  ],
+  "schedule": [],
   "baseBranches": [
     "master"
   ],
@@ -117,13 +115,25 @@
         "passport-saml"
       ],
       "enabled": false
+    },
+    {
+      "description": "Security updates should be created immediately",
+      "matchPackagePatterns": [
+        ".*"
+      ],
+      "vulnerabilityAlerts": {
+        "enabled": true,
+        "labels": [
+          "security",
+          "priority-high"
+        ],
+        "schedule": []
+      }
     }
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": [
-      "before 6am on Sunday"
-    ]
+    "schedule": []
   },
   "prBodyDefinitions": {
     "Notes": "⚠️ This PR was automatically created by Renovate Bot"
