@@ -9,10 +9,6 @@
   "schedule": [
     "before 6am on Sunday"
   ],
-  "scheduleAutomerge": "before 6am on Sunday",
-  "ignoreSchedule": [
-    "{{#if (containsString body 'manual')}}true{{else}}false{{/if}}"
-  ],
   "baseBranches": [
     "master"
   ],
