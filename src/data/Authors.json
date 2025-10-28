@@ -11,12 +11,12 @@
         },
         {
             "id": 2,
-            "name": "Jane Cooper",
+            "name": "Osama Cooper",
             "job": "Artist",
             "city": "Berlin",
-            "image": "https://i0.wp.com/hairbyclara.com/wp-content/uploads/2019/04/blog7.jpg?w=687&ssl=1",
-            "about": "Jane Cooper, an accomplished artist from Berlin, combines traditional techniques with modern aesthetics, drawing inspiration from the city’s vibrant urban landscapes.",
-            "description": "Jane Cooper, an accomplished Berlin-based artist, blends traditional and modern techniques, drawing inspiration from Berlin's urban landscapes. Her works reflect the city's dynamic spirit and aesthetic."
+            "image": "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6",
+            "about": "Osama Cooper, an accomplished artist from Berlin, combines traditional techniques with modern aesthetics, drawing inspiration from the city’s vibrant urban landscapes.",
+            "description": "Osama Cooper, an accomplished Berlin-based artist, blends traditional and modern techniques, drawing inspiration from Berlin's urban landscapes. His works reflect the city's dynamic spirit and aesthetic."
         },
         {
             "id": 3,
