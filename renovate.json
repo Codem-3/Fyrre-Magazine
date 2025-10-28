@@ -1,0 +1,160 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate configuration for Qumasoft Web monorepo",
+  "extends": [
+    "config:recommended",
+    ":enableVulnerabilityAlertsWithLabel(security)"
+  ],
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    "before 6am on Sunday"
+  ],
+  "scheduleAutomerge": "before 6am on Sunday",
+  "ignoreSchedule": [
+    "{{#if (containsString body 'manual')}}true{{else}}false{{/if}}"
+  ],
+  "baseBranches": [
+    "main",
+    "develop/2.3",
+    "develop/2.2"
+  ],
+  "enabledManagers": [
+    "npm"
+  ],
+  "rangeStrategy": "bump",
+  "semanticCommits": "enabled",
+  "commitMessagePrefix": "chore(deps):",
+  "commitMessageAction": "update",
+  "commitMessageTopic": "{{depName}}",
+  "prCreation": "immediate",
+  "prConcurrentLimit": 5,
+  "branchPrefix": "renovate/",
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "assigneesFromCodeOwners": true,
+  "reviewersFromCodeOwners": true,
+  "platformAutomerge": false,
+  "requiredStatusChecks": [
+    "quick-check",
+    "build-check"
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Group all Angular packages together",
+      "groupName": "Angular",
+      "matchPackagePatterns": [
+        "^@angular/"
+      ]
+    },
+    {
+      "description": "Group all NestJS packages together",
+      "groupName": "NestJS",
+      "matchPackagePatterns": [
+        "^@nestjs/"
+      ]
+    },
+    {
+      "description": "Group all Nx packages together",
+      "groupName": "Nx",
+      "matchPackagePatterns": [
+        "^@nx/",
+        "^@nrwl/",
+        "^nx$"
+      ]
+    },
+    {
+      "description": "Group all NGXS packages together",
+      "groupName": "NGXS",
+      "matchPackagePatterns": [
+        "^@ngxs/"
+      ]
+    },
+    {
+      "description": "Group ESLint packages together",
+      "groupName": "ESLint",
+      "matchPackagePatterns": [
+        "^@eslint/",
+        "^eslint",
+        "^@typescript-eslint/",
+        "^typescript-eslint$",
+        "^angular-eslint$"
+      ]
+    },
+    {
+      "description": "Group Cypress packages together",
+      "groupName": "Cypress",
+      "matchPackagePatterns": [
+        "^cypress",
+        "^@nx/cypress"
+      ]
+    },
+    {
+      "description": "Ignore passport-saml critical vulnerability for now (separate ticket)",
+      "matchPackageNames": [
+        "passport-saml"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Automerge patch updates for non-major dependencies",
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Separate PR for major updates",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": null,
+      "labels": [
+        "dependencies",
+        "major-update"
+      ]
+    },
+    {
+      "description": "Pin Node.js version",
+      "matchPackageNames": [
+        "node"
+      ],
+      "enabled": false
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 6am on Sunday"
+    ]
+  },
+  "prBodyDefinitions": {
+    "Notes": "⚠️ This PR was automatically created by Renovate Bot"
+  },
+  "prBodyColumns": [
+    "Package",
+    "Change",
+    "Age",
+    "Adoption",
+    "Passing",
+    "Confidence"
+  ],
+  "prBodyNotes": [
+    "Automated tests will run to verify these changes",
+    "Please review the changes carefully before merging",
+    "This PR runs weekly on Sundays at 6am (Europe/Berlin time)"
+  ],
+  "postUpdateOptions": [
+    "npmDedupe"
+  ],
+  "ignoreDeps": [],
+  "ignorePresets": []
+}
