@@ -10,8 +10,6 @@
     "before 6am on Sunday"
   ],
   "scheduleAutomerge": "before 6am on Sunday",
-  "automerge": true,
-  "automergeType": "pr",
   "ignoreSchedule": [
     "{{#if (containsString body 'manual')}}true{{else}}false{{/if}}"
   ],
@@ -36,9 +34,7 @@
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
   "platformAutomerge": true,
-  "requiredStatusChecks": [
-    "test"
-  ],
+  "requiredStatusChecks": [],
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": [
@@ -97,9 +93,7 @@
       ],
       "automerge": true,
       "automergeType": "pr",
-      "requiredStatusChecks": [
-        "test"
-      ]
+      "requiredStatusChecks": []
     },
     {
       "description": "Separate PR for major updates",
@@ -125,19 +119,6 @@
         "passport-saml"
       ],
       "enabled": false
-    },
-    {
-      "description": "Security updates should be prioritized",
-      "matchPackagePatterns": [
-        ".*"
-      ],
-      "vulnerabilityAlerts": {
-        "enabled": true,
-        "labels": [
-          "security",
-          "priority-high"
-        ]
-      }
     }
   ],
   "lockFileMaintenance": {
@@ -167,6 +148,5 @@
   ],
   "ignoreDeps": [],
   "ignorePresets": [],
-  "osvVulnerabilityAlerts": true,
-  "osvVulnerabilityAlertsEnabled": true
+  "osvVulnerabilityAlerts": true
 }
