@@ -42,10 +42,15 @@
   },
   "packageRules": [
     {
-      "description": "Group ALL dependencies into a single PR",
+      "description": "Group ALL dependencies into a single PR (including major updates)",
       "groupName": "All Dependencies",
       "matchPackagePatterns": [
         ".*"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "major"
       ],
       "automerge": false,
       "requiredStatusChecks": []
@@ -66,8 +71,7 @@
     }
   ],
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": []
+    "enabled": false
   },
   "prBodyDefinitions": {
     "Notes": "⚠️ This PR was automatically created by Renovate Bot"

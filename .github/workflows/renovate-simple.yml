@@ -37,8 +37,8 @@ jobs:
           npm audit --audit-level=moderate --json > audit-results.json || true
           echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
           if [ -f audit-results.json ]; then
-            # Extract vulnerability count safely (simplified)
-            VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
+            # Extract vulnerability count using jq instead of node to avoid syntax errors
+            VULN_COUNT=$(jq -r '.metadata.vulnerabilities.total // 0' audit-results.json 2>/dev/null || echo "0")
             echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
           else
             echo "vulnerability-count=0" >> $GITHUB_OUTPUT
@@ -91,8 +91,8 @@ jobs:
           npm audit --audit-level=moderate --json > audit-results.json || true
           echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
           if [ -f audit-results.json ]; then
-            # Extract vulnerability count safely (simplified)
-            VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
+            # Extract vulnerability count using jq instead of node to avoid syntax errors
+            VULN_COUNT=$(jq -r '.metadata.vulnerabilities.total // 0' audit-results.json 2>/dev/null || echo "0")
             echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
           else
             echo "vulnerability-count=0" >> $GITHUB_OUTPUT
