@@ -292,6 +292,8 @@ jobs:
           if [ "${{ steps.security-check.outputs.has_security }}" = "true" ] || [ "${{ steps.security-check.outputs.audit_vulnerabilities }}" -gt 0 ]; then
             echo "⚠️  **VULNERABILITIES FOUND!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Number of vulnerabilities:** ${{ steps.security-check.outputs.audit_vulnerabilities }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
             echo "A detailed report has been created as an issue." >> $GITHUB_STEP_SUMMARY
             echo "Team members watching this repository will receive email notifications." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
