@@ -10,6 +10,8 @@
     "before 6am on Sunday"
   ],
   "scheduleAutomerge": "before 6am on Sunday",
+  "automerge": true,
+  "automergeType": "pr",
   "ignoreSchedule": [
     "{{#if (containsString body 'manual')}}true{{else}}false{{/if}}"
   ],
@@ -33,10 +35,9 @@
   ],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
-  "platformAutomerge": false,
+  "platformAutomerge": true,
   "requiredStatusChecks": [
-    "quick-check",
-    "build-check"
+    "test"
   ],
   "vulnerabilityAlerts": {
     "enabled": true,
@@ -89,12 +90,16 @@
       ]
     },
     {
-      "description": "Automerge patch updates for non-major dependencies",
+      "description": "Automerge patch and minor updates for non-major dependencies",
       "matchUpdateTypes": [
-        "patch"
+        "patch",
+        "minor"
       ],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "requiredStatusChecks": [
+        "test"
+      ]
     },
     {
       "description": "Separate PR for major updates",
@@ -111,6 +116,13 @@
       "description": "Pin Node.js version",
       "matchPackageNames": [
         "node"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Ignore passport-saml critical vulnerability for now (separate ticket)",
+      "matchPackageNames": [
+        "passport-saml"
       ],
       "enabled": false
     },

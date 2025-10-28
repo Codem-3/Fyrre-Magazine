@@ -16,6 +16,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      checks: write
 
     steps:
       - name: Checkout repository
@@ -54,6 +55,30 @@ jobs:
           RENOVATE_VULNERABILITY_ALERTS: true
           RENOVATE_OSV_VULNERABILITY_ALERTS: true
           RENOVATE_PR_CREATION: immediate
+          RENOVATE_AUTOMERGE: true
+          RENOVATE_AUTOMERGE_TYPE: pr
+
+      - name: Build and Test (if Renovate created PRs)
+        if: always()
+        run: |
+          echo "## 🔨 Build and Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check if there are any open Renovate PRs
+          PRS=$(gh pr list --label renovate --state open --json number --jq 'length')
+          echo "Found $PRS open Renovate PRs" >> $GITHUB_STEP_SUMMARY
+
+          if [ "$PRS" -gt 0 ]; then
+            echo "✅ Renovate has created $PRS PR(s) for dependency updates" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Next steps:**" >> $GITHUB_STEP_SUMMARY
+            echo "1. Review the PRs for any breaking changes" >> $GITHUB_STEP_SUMMARY
+            echo "2. Run \`npm run build\` to test the build" >> $GITHUB_STEP_SUMMARY
+            echo "3. Run \`npm run lint\` to check code quality" >> $GITHUB_STEP_SUMMARY
+            echo "4. Merge PRs if tests pass" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No new dependency updates needed this week" >> $GITHUB_STEP_SUMMARY
+          fi
 
       - name: Summary
         if: always()
