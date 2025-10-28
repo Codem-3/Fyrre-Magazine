@@ -24,8 +24,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -36,9 +36,11 @@ jobs:
           npm audit --audit-level=moderate --json > audit-results.json || true
           echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
           if [ -f audit-results.json ]; then
-            echo "audit-results<<EOF" >> $GITHUB_OUTPUT
-            cat audit-results.json >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
+            # Extract vulnerability count safely
+            VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
+            echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "vulnerability-count=0" >> $GITHUB_OUTPUT
           fi
 
       - name: Run Renovate
@@ -76,8 +78,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -88,9 +90,11 @@ jobs:
           npm audit --audit-level=moderate --json > audit-results.json || true
           echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
           if [ -f audit-results.json ]; then
-            echo "audit-results<<EOF" >> $GITHUB_OUTPUT
-            cat audit-results.json >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
+            # Extract vulnerability count safely
+            VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
+            echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "vulnerability-count=0" >> $GITHUB_OUTPUT
           fi
 
       - name: Check for security PRs and vulnerabilities
@@ -122,13 +126,10 @@ jobs:
             // Parse npm audit results
             let auditVulnerabilities = 0;
             try {
-              const auditResults = `${{ steps.audit.outputs.audit-results }}`;
-              if (auditResults && auditResults !== '') {
-                const audit = JSON.parse(auditResults);
-                auditVulnerabilities = audit.metadata?.vulnerabilities?.total || 0;
-              }
+              const vulnCount = `${{ steps.audit.outputs.vulnerability-count }}`;
+              auditVulnerabilities = parseInt(vulnCount) || 0;
             } catch (e) {
-              console.log('Could not parse audit results:', e.message);
+              console.log('Could not parse vulnerability count:', e.message);
             }
 
             core.setOutput('security_count', securityPRs.length);
