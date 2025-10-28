@@ -41,18 +41,21 @@ jobs:
             VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
             echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
             
-            # Extract detailed vulnerability information
+            # Extract detailed vulnerability information (simplified to avoid syntax errors)
             VULN_DETAILS=$(node -e "
               try {
                 const audit = require('./audit-results.json');
                 const vulnerabilities = audit.vulnerabilities || {};
-                const details = Object.entries(vulnerabilities).map(([name, vuln]) => ({
-                  name: name,
-                  severity: vuln.severity || 'unknown',
-                  via: vuln.via || [],
-                  range: vuln.range || 'unknown',
-                  fixAvailable: vuln.fixAvailable || false
-                }));
+                const details = [];
+                for (const [name, vuln] of Object.entries(vulnerabilities)) {
+                  details.push({
+                    name: name,
+                    severity: vuln.severity || 'unknown',
+                    via: Array.isArray(vuln.via) ? vuln.via : [],
+                    range: vuln.range || 'unknown',
+                    fixAvailable: vuln.fixAvailable || false
+                  });
+                }
                 console.log(JSON.stringify(details));
               } catch(e) {
                 console.log('[]');
@@ -82,14 +85,16 @@ jobs:
 
       - name: Build and Test (if Renovate created PRs)
         if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           echo "## 🔨 Build and Test Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-
+          
           # Check if there are any open Renovate PRs
           PRS=$(gh pr list --label renovate --state open --json number --jq 'length')
           echo "Found $PRS open Renovate PRs" >> $GITHUB_STEP_SUMMARY
-
+          
           if [ "$PRS" -gt 0 ]; then
             echo "✅ Renovate has created $PRS PR(s) for dependency updates" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
@@ -141,18 +146,21 @@ jobs:
             VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
             echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
             
-            # Extract detailed vulnerability information
+            # Extract detailed vulnerability information (simplified to avoid syntax errors)
             VULN_DETAILS=$(node -e "
               try {
                 const audit = require('./audit-results.json');
                 const vulnerabilities = audit.vulnerabilities || {};
-                const details = Object.entries(vulnerabilities).map(([name, vuln]) => ({
-                  name: name,
-                  severity: vuln.severity || 'unknown',
-                  via: vuln.via || [],
-                  range: vuln.range || 'unknown',
-                  fixAvailable: vuln.fixAvailable || false
-                }));
+                const details = [];
+                for (const [name, vuln] of Object.entries(vulnerabilities)) {
+                  details.push({
+                    name: name,
+                    severity: vuln.severity || 'unknown',
+                    via: Array.isArray(vuln.via) ? vuln.via : [],
+                    range: vuln.range || 'unknown',
+                    fixAvailable: vuln.fixAvailable || false
+                  });
+                }
                 console.log(JSON.stringify(details));
               } catch(e) {
                 console.log('[]');
@@ -218,7 +226,7 @@ jobs:
             report += `**📅 Date:** ${new Date().toLocaleDateString()}\n`;
             report += `**🏢 Repository:** ${context.repo.owner}/${context.repo.repo}\n`;
             report += `**⏰ Generated:** ${new Date().toLocaleString()}\n\n`;
-            
+
             report += `## 📈 Executive Summary\n\n`;
             report += `| Metric | Count | Status |\n`;
             report += `|--------|-------|--------|\n`;
@@ -275,7 +283,7 @@ jobs:
             }
 
             report += `## 📋 Recommended Actions\n\n`;
-            
+
             if (auditVulnerabilities > 0) {
               report += `### 🚨 Immediate Security Actions\n`;
               report += `1. **Run \`npm audit fix\`** to automatically fix vulnerabilities where possible\n`;
@@ -283,28 +291,28 @@ jobs:
               report += `3. **Update packages manually** if automatic fixes are not available\n`;
               report += `4. **Test thoroughly** after applying fixes\n\n`;
             }
-            
+
             if (securityPRs.length > 0) {
               report += `### 🔒 Security PR Management\n`;
               report += `1. **Review security PRs** created by Renovate\n`;
               report += `2. **Merge approved PRs** after testing\n`;
               report += `3. **Monitor for new vulnerabilities** weekly\n\n`;
             }
-            
+
             if (majorUpdatePRs.length > 0) {
               report += `### ⚠️ Major Update Review\n`;
               report += `1. **Review breaking changes** in major updates\n`;
               report += `2. **Test thoroughly** before merging\n`;
               report += `3. **Update documentation** if needed\n\n`;
             }
-            
+
             if (allRenovatePRs.length > 0) {
               report += `### 📦 General Maintenance\n`;
               report += `1. **Review all Renovate PRs** for compatibility\n`;
               report += `2. **Run automated tests** before merging\n`;
               report += `3. **Monitor build status** and CI/CD pipelines\n\n`;
             }
-            
+
             report += `## 🔔 Notification Settings\n\n`;
             report += `To receive notifications for future reports:\n`;
             report += `- **Watch this repository** (Settings → Notifications → Custom → Issues)\n`;
