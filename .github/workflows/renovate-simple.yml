@@ -21,6 +21,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        id: audit
+        run: |
+          npm audit --audit-level=moderate --json > audit-results.json || true
+          echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
+          if [ -f audit-results.json ]; then
+            echo "audit-results<<EOF" >> $GITHUB_OUTPUT
+            cat audit-results.json >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run Renovate
         uses: renovatebot/github-action@v43.0.18
         with:
@@ -31,6 +51,7 @@ jobs:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           RENOVATE_VULNERABILITY_ALERTS: true
           RENOVATE_OSV_VULNERABILITY_ALERTS: true
+          RENOVATE_PR_CREATION: immediate
 
       - name: Summary
         if: always()
@@ -49,7 +70,30 @@ jobs:
       issues: write
 
     steps:
-      - name: Check for security PRs
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        id: audit
+        run: |
+          npm audit --audit-level=moderate --json > audit-results.json || true
+          echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
+          if [ -f audit-results.json ]; then
+            echo "audit-results<<EOF" >> $GITHUB_OUTPUT
+            cat audit-results.json >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check for security PRs and vulnerabilities
         id: security-check
         uses: actions/github-script@v7
         with:
@@ -75,10 +119,23 @@ jobs:
               pr.labels.some(label => label.name === 'renovate')
             );
 
+            // Parse npm audit results
+            let auditVulnerabilities = 0;
+            try {
+              const auditResults = `${{ steps.audit.outputs.audit-results }}`;
+              if (auditResults && auditResults !== '') {
+                const audit = JSON.parse(auditResults);
+                auditVulnerabilities = audit.metadata?.vulnerabilities?.total || 0;
+              }
+            } catch (e) {
+              console.log('Could not parse audit results:', e.message);
+            }
+
             core.setOutput('security_count', securityPRs.length);
             core.setOutput('total_count', allRenovatePRs.length);
             core.setOutput('major_count', majorUpdatePRs.length);
             core.setOutput('has_security', securityPRs.length > 0);
+            core.setOutput('audit_vulnerabilities', auditVulnerabilities);
 
             // Create detailed report
             let report = `# 📊 Weekly Renovate Report\n\n`;
@@ -87,7 +144,8 @@ jobs:
             report += `## Summary\n\n`;
             report += `- 🔒 **Security Updates:** ${securityPRs.length}\n`;
             report += `- ⚠️  **Major Updates:** ${majorUpdatePRs.length}\n`;
-            report += `- 📦 **Total Updates:** ${allRenovatePRs.length}\n\n`;
+            report += `- 📦 **Total Updates:** ${allRenovatePRs.length}\n`;
+            report += `- 🚨 **NPM Audit Vulnerabilities:** ${auditVulnerabilities}\n\n`;
 
             if (securityPRs.length > 0) {
               report += `## 🚨 Security Vulnerabilities\n\n`;
@@ -192,14 +250,19 @@ jobs:
           echo "- 🔒 Security Updates: ${{ steps.security-check.outputs.security_count }}" >> $GITHUB_STEP_SUMMARY
           echo "- ⚠️  Major Updates: ${{ steps.security-check.outputs.major_count }}" >> $GITHUB_STEP_SUMMARY
           echo "- 📦 Total Updates: ${{ steps.security-check.outputs.total_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 🚨 NPM Audit Vulnerabilities: ${{ steps.security-check.outputs.audit_vulnerabilities }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.security-check.outputs.has_security }}" = "true" ]; then
-            echo "⚠️  **SECURITY VULNERABILITIES FOUND!**" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.security-check.outputs.has_security }}" = "true" ] || [ "${{ steps.security-check.outputs.audit_vulnerabilities }}" -gt 0 ]; then
+            echo "⚠️  **VULNERABILITIES FOUND!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "A detailed report has been created as an issue." >> $GITHUB_STEP_SUMMARY
             echo "Team members watching this repository will receive email notifications." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**To fix vulnerabilities:**" >> $GITHUB_STEP_SUMMARY
+            echo "1. Run \`npm audit fix\` locally" >> $GITHUB_STEP_SUMMARY
+            echo "2. Review and merge any security PRs created by Renovate" >> $GITHUB_STEP_SUMMARY
           else
-            echo "✅ No security vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+            echo "✅ No vulnerabilities found" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**How to get notifications:**" >> $GITHUB_STEP_SUMMARY
