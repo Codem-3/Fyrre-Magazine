@@ -29,7 +29,7 @@
   ],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
-  "platformAutomerge": true,
+  "platformAutomerge": false,
   "requiredStatusChecks": [],
   "vulnerabilityAlerts": {
     "enabled": true,
@@ -37,7 +37,9 @@
       "security",
       "priority-high"
     ],
-    "schedule": "at any time"
+    "schedule": "at any time",
+    "assignees": [],
+    "reviewers": []
   },
   "packageRules": [
     {
@@ -87,7 +89,7 @@
         "patch",
         "minor"
       ],
-      "automerge": true,
+      "automerge": false,
       "automergeType": "pr",
       "requiredStatusChecks": []
     },
