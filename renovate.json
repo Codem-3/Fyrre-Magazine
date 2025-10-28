@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate configuration for Qumasoft Web monorepo",
+  "description": "Renovate configuration for Fyrre ViteJS project",
   "extends": [
     "config:recommended",
     ":enableVulnerabilityAlertsWithLabel(security)"
@@ -14,9 +14,7 @@
     "{{#if (containsString body 'manual')}}true{{else}}false{{/if}}"
   ],
   "baseBranches": [
-    "main",
-    "develop/2.3",
-    "develop/2.2"
+    "master"
   ],
   "enabledManagers": [
     "npm"
@@ -43,38 +41,26 @@
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": [
-      "security"
-    ]
+      "security",
+      "priority-high"
+    ],
+    "schedule": "at any time"
   },
   "packageRules": [
     {
-      "description": "Group all Angular packages together",
-      "groupName": "Angular",
+      "description": "Group all React packages together",
+      "groupName": "React",
       "matchPackagePatterns": [
-        "^@angular/"
+        "^react",
+        "^@types/react"
       ]
     },
     {
-      "description": "Group all NestJS packages together",
-      "groupName": "NestJS",
+      "description": "Group all Vite packages together",
+      "groupName": "Vite",
       "matchPackagePatterns": [
-        "^@nestjs/"
-      ]
-    },
-    {
-      "description": "Group all Nx packages together",
-      "groupName": "Nx",
-      "matchPackagePatterns": [
-        "^@nx/",
-        "^@nrwl/",
-        "^nx$"
-      ]
-    },
-    {
-      "description": "Group all NGXS packages together",
-      "groupName": "NGXS",
-      "matchPackagePatterns": [
-        "^@ngxs/"
+        "^vite",
+        "^@vitejs/"
       ]
     },
     {
@@ -83,25 +69,24 @@
       "matchPackagePatterns": [
         "^@eslint/",
         "^eslint",
-        "^@typescript-eslint/",
-        "^typescript-eslint$",
-        "^angular-eslint$"
+        "^eslint-plugin-"
       ]
     },
     {
-      "description": "Group Cypress packages together",
-      "groupName": "Cypress",
+      "description": "Group Tailwind CSS packages together",
+      "groupName": "Tailwind CSS",
       "matchPackagePatterns": [
-        "^cypress",
-        "^@nx/cypress"
+        "^tailwindcss",
+        "^autoprefixer",
+        "^postcss"
       ]
     },
     {
-      "description": "Ignore passport-saml critical vulnerability for now (separate ticket)",
-      "matchPackageNames": [
-        "passport-saml"
-      ],
-      "enabled": false
+      "description": "Group TypeScript packages together",
+      "groupName": "TypeScript",
+      "matchPackagePatterns": [
+        "^@types/"
+      ]
     },
     {
       "description": "Automerge patch updates for non-major dependencies",
@@ -128,6 +113,19 @@
         "node"
       ],
       "enabled": false
+    },
+    {
+      "description": "Security updates should be prioritized",
+      "matchPackagePatterns": [
+        ".*"
+      ],
+      "vulnerabilityAlerts": {
+        "enabled": true,
+        "labels": [
+          "security",
+          "priority-high"
+        ]
+      }
     }
   ],
   "lockFileMaintenance": {
@@ -156,5 +154,7 @@
     "npmDedupe"
   ],
   "ignoreDeps": [],
-  "ignorePresets": []
+  "ignorePresets": [],
+  "osvVulnerabilityAlerts": true,
+  "osvVulnerabilityAlertsEnabled": true
 }

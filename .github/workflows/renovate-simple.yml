@@ -29,6 +29,8 @@ jobs:
         env:
           LOG_LEVEL: info
           RENOVATE_REPOSITORIES: ${{ github.repository }}
+          RENOVATE_VULNERABILITY_ALERTS: true
+          RENOVATE_OSV_VULNERABILITY_ALERTS: true
 
       - name: Summary
         if: always()
