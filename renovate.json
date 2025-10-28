@@ -19,7 +19,8 @@
   "commitMessageAction": "update",
   "commitMessageTopic": "{{depName}}",
   "prCreation": "immediate",
-  "prConcurrentLimit": 5,
+  "prConcurrentLimit": 100,
+  "prHourlyLimit": 14,
   "branchPrefix": "renovate/",
   "labels": [
     "dependencies",
@@ -156,5 +157,8 @@
   ],
   "ignoreDeps": [],
   "ignorePresets": [],
-  "osvVulnerabilityAlerts": true
+  "osvVulnerabilityAlerts": true,
+  "rateLimit": {
+    "maxRequestsPerMinute": 30
+  }
 }
