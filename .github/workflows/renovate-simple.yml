@@ -127,7 +127,7 @@ jobs:
             // Parse npm audit results (simplified to avoid syntax errors)
             let auditVulnerabilities = 0;
             try {
-              const vulnCount = '${{ steps.audit.outputs.vulnerability-count }}';
+              const vulnCount = `${{ steps.audit.outputs.vulnerability-count }}`;
               auditVulnerabilities = parseInt(vulnCount) || 0;
             } catch (e) {
               console.log('Could not parse vulnerability count:', e.message);
@@ -140,93 +140,93 @@ jobs:
             core.setOutput('audit_vulnerabilities', auditVulnerabilities);
 
             // Create detailed report
-            let report = '# 📊 Weekly Security & Dependency Report\n\n';
-            report += '**📅 Date:** ' + new Date().toLocaleDateString() + '\n';
-            report += '**🏢 Repository:** ' + context.repo.owner + '/' + context.repo.repo + '\n';
-            report += '**⏰ Generated:** ' + new Date().toLocaleString() + '\n\n';
+            let report = `# 📊 Weekly Security & Dependency Report\n\n`;
+            report += `**📅 Date:** ${new Date().toLocaleDateString()}\n`;
+            report += `**🏢 Repository:** ${context.repo.owner}/${context.repo.repo}\n`;
+            report += `**⏰ Generated:** ${new Date().toLocaleString()}\n\n`;
 
-            report += '## 📈 Executive Summary\n\n';
-            report += '| Metric | Count | Status |\n';
-            report += '|--------|-------|--------|\n';
-            report += '| 🔒 Security Updates | ' + securityPRs.length + ' | ' + (securityPRs.length > 0 ? '⚠️ Action Required' : '✅ Up to Date') + ' |\n';
-            report += '| ⚠️ Major Updates | ' + majorUpdatePRs.length + ' | ' + (majorUpdatePRs.length > 0 ? '🔍 Review Needed' : '✅ No Breaking Changes') + ' |\n';
-            report += '| 📦 Total Updates | ' + allRenovatePRs.length + ' | ' + (allRenovatePRs.length > 0 ? '📋 Review Required' : '✅ All Current') + ' |\n';
-            report += '| 🚨 NPM Vulnerabilities | ' + auditVulnerabilities + ' | ' + (auditVulnerabilities > 0 ? '🚨 CRITICAL' : '✅ Secure') + ' |\n\n';
+            report += `## 📈 Executive Summary\n\n`;
+            report += `| Metric | Count | Status |\n`;
+            report += `|--------|-------|--------|\n`;
+            report += `| 🔒 Security Updates | ${securityPRs.length} | ${securityPRs.length > 0 ? '⚠️ Action Required' : '✅ Up to Date'} |\n`;
+            report += `| ⚠️ Major Updates | ${majorUpdatePRs.length} | ${majorUpdatePRs.length > 0 ? '🔍 Review Needed' : '✅ No Breaking Changes'} |\n`;
+            report += `| 📦 Total Updates | ${allRenovatePRs.length} | ${allRenovatePRs.length > 0 ? '📋 Review Required' : '✅ All Current'} |\n`;
+            report += `| 🚨 NPM Vulnerabilities | ${auditVulnerabilities} | ${auditVulnerabilities > 0 ? '🚨 CRITICAL' : '✅ Secure'} |\n\n`;
 
             // Add basic vulnerability information
             if (auditVulnerabilities > 0) {
-              report += '## 🚨 Security Vulnerabilities Detected\n\n';
-              report += '**Total Vulnerabilities:** ' + auditVulnerabilities + '\n\n';
-              report += '### 📋 Recommended Actions\n';
-              report += '1. **Run `npm audit fix`** to automatically fix vulnerabilities\n';
-              report += '2. **Review the audit output** for detailed information\n';
-              report += '3. **Test thoroughly** after applying fixes\n\n';
+              report += `## 🚨 Security Vulnerabilities Detected\n\n`;
+              report += `**Total Vulnerabilities:** ${auditVulnerabilities}\n\n`;
+              report += `### 📋 Recommended Actions\n`;
+              report += `1. **Run \`npm audit fix\`** to automatically fix vulnerabilities\n`;
+              report += `2. **Review the audit output** for detailed information\n`;
+              report += `3. **Test thoroughly** after applying fixes\n\n`;
             }
 
             if (securityPRs.length > 0) {
-              report += '## 🔒 Security PRs Created by Renovate\n\n';
-              report += 'The following PRs address security vulnerabilities:\n\n';
+              report += `## 🔒 Security PRs Created by Renovate\n\n`;
+              report += `The following PRs address security vulnerabilities:\n\n`;
               securityPRs.forEach(pr => {
-                report += '### [' + pr.title + '](' + pr.html_url + ')\n';
-                report += '- **Status:** ' + (pr.mergeable_state || 'unknown') + '\n';
-                report += '- **Created:** ' + new Date(pr.created_at).toLocaleDateString() + '\n';
-                report += '- **Branch:** `' + pr.head.ref + '` → `' + pr.base.ref + '`\n\n';
+                report += `### [${pr.title}](${pr.html_url})\n`;
+                report += `- **Status:** ${pr.mergeable_state || 'unknown'}\n`;
+                report += `- **Created:** ${new Date(pr.created_at).toLocaleDateString()}\n`;
+                report += `- **Branch:** \`${pr.head.ref}\` → \`${pr.base.ref}\`\n\n`;
               });
             }
 
             if (majorUpdatePRs.length > 0) {
-              report += '## ⚠️  Major Version Updates\n\n';
-              report += 'These updates may contain breaking changes:\n\n';
+              report += `## ⚠️  Major Version Updates\n\n`;
+              report += `These updates may contain breaking changes:\n\n`;
               majorUpdatePRs.forEach(pr => {
-                report += '- [' + pr.title + '](' + pr.html_url + ')\n';
+                report += `- [${pr.title}](${pr.html_url})\n`;
               });
-              report += '\n';
+              report += `\n`;
             }
 
             if (allRenovatePRs.length === 0) {
-              report += '## ✅ All Up to Date\n\n';
-              report += 'No dependency updates needed. All packages are up to date!\n\n';
+              report += `## ✅ All Up to Date\n\n`;
+              report += `No dependency updates needed. All packages are up to date!\n\n`;
             }
 
-            report += '## 📋 Recommended Actions\n\n';
+            report += `## 📋 Recommended Actions\n\n`;
 
             if (auditVulnerabilities > 0) {
-              report += '### 🚨 Immediate Security Actions\n';
-              report += '1. **Run `npm audit fix`** to automatically fix vulnerabilities where possible\n';
-              report += '2. **Review critical vulnerabilities** in the table above\n';
-              report += '3. **Update packages manually** if automatic fixes are not available\n';
-              report += '4. **Test thoroughly** after applying fixes\n\n';
+              report += `### 🚨 Immediate Security Actions\n`;
+              report += `1. **Run \`npm audit fix\`** to automatically fix vulnerabilities where possible\n`;
+              report += `2. **Review critical vulnerabilities** in the table above\n`;
+              report += `3. **Update packages manually** if automatic fixes are not available\n`;
+              report += `4. **Test thoroughly** after applying fixes\n\n`;
             }
 
             if (securityPRs.length > 0) {
-              report += '### 🔒 Security PR Management\n';
-              report += '1. **Review security PRs** created by Renovate\n';
-              report += '2. **Merge approved PRs** after testing\n';
-              report += '3. **Monitor for new vulnerabilities** weekly\n\n';
+              report += `### 🔒 Security PR Management\n`;
+              report += `1. **Review security PRs** created by Renovate\n`;
+              report += `2. **Merge approved PRs** after testing\n`;
+              report += `3. **Monitor for new vulnerabilities** weekly\n\n`;
             }
 
             if (majorUpdatePRs.length > 0) {
-              report += '### ⚠️ Major Update Review\n';
-              report += '1. **Review breaking changes** in major updates\n';
-              report += '2. **Test thoroughly** before merging\n';
-              report += '3. **Update documentation** if needed\n\n';
+              report += `### ⚠️ Major Update Review\n`;
+              report += `1. **Review breaking changes** in major updates\n`;
+              report += `2. **Test thoroughly** before merging\n`;
+              report += `3. **Update documentation** if needed\n\n`;
             }
 
             if (allRenovatePRs.length > 0) {
-              report += '### 📦 General Maintenance\n';
-              report += '1. **Review all Renovate PRs** for compatibility\n';
-              report += '2. **Run automated tests** before merging\n';
-              report += '3. **Monitor build status** and CI/CD pipelines\n\n';
+              report += `### 📦 General Maintenance\n`;
+              report += `1. **Review all Renovate PRs** for compatibility\n`;
+              report += `2. **Run automated tests** before merging\n`;
+              report += `3. **Monitor build status** and CI/CD pipelines\n\n`;
             }
 
-            report += '## 🔔 Notification Settings\n\n';
-            report += 'To receive notifications for future reports:\n';
-            report += '- **Watch this repository** (Settings → Notifications → Custom → Issues)\n';
-            report += '- **Subscribe to `renovate-report` label** for automated reports\n';
-            report += '- **Enable email notifications** for security alerts\n\n';
-            report += '---\n';
-            report += '*This report was automatically generated by the Renovate Security Workflow*\n';
-            report += '*Next scheduled run: Every Sunday at 6:00 AM (Europe/Berlin time)*';
+            report += `## 🔔 Notification Settings\n\n`;
+            report += `To receive notifications for future reports:\n`;
+            report += `- **Watch this repository** (Settings → Notifications → Custom → Issues)\n`;
+            report += `- **Subscribe to \`renovate-report\` label** for automated reports\n`;
+            report += `- **Enable email notifications** for security alerts\n\n`;
+            report += `---\n`;
+            report += `*This report was automatically generated by the Renovate Security Workflow*\n`;
+            report += `*Next scheduled run: Every Sunday at 6:00 AM (Europe/Berlin time)*`;
 
             core.setOutput('report', report);
             return report;
@@ -236,8 +236,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const report = '${{ steps.security-check.outputs.report }}';
-            const title = '🔒 Weekly Security & Dependency Report - ' + new Date().toLocaleDateString();
+            const report = `${{ steps.security-check.outputs.report }}`;
+            const title = `🔒 Weekly Security & Dependency Report - ${new Date().toLocaleDateString()}`;
 
             // Check if there's an open report issue from this week
             const { data: issues } = await github.rest.issues.listForRepo({
@@ -269,10 +269,10 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: recentIssue.number,
-                body: '🔄 Report updated at ' + new Date().toLocaleString()
+                body: `🔄 Report updated at ${new Date().toLocaleString()}`
               });
 
-              console.log('Updated issue #' + recentIssue.number);
+              console.log(`Updated issue #${recentIssue.number}`);
             } else {
               // Create new issue
               const { data: issue } = await github.rest.issues.create({
@@ -283,7 +283,7 @@ jobs:
                 labels: ['renovate-report', 'dependencies']
               });
 
-              console.log('Created issue #' + issue.number);
+              console.log(`Created issue #${issue.number}`);
             }
 
       - name: Post summary

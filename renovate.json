@@ -82,8 +82,7 @@
     "Age",
     "Adoption",
     "Passing",
-    "Confidence",
-    "Type"
+    "Confidence"
   ],
   "prBodyNotes": [
     "Automated tests will run to verify these changes",
