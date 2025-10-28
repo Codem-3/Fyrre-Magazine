@@ -157,8 +157,5 @@
   ],
   "ignoreDeps": [],
   "ignorePresets": [],
-  "osvVulnerabilityAlerts": true,
-  "rateLimit": {
-    "maxRequestsPerMinute": 30
-  }
+  "osvVulnerabilityAlerts": true
 }
