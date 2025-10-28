@@ -37,36 +37,11 @@ jobs:
           npm audit --audit-level=moderate --json > audit-results.json || true
           echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
           if [ -f audit-results.json ]; then
-            # Extract vulnerability count and details safely
+            # Extract vulnerability count safely (simplified)
             VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
             echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
-            
-            # Extract detailed vulnerability information (simplified to avoid syntax errors)
-            VULN_DETAILS=$(node -e "
-              try {
-                const audit = require('./audit-results.json');
-                const vulnerabilities = audit.vulnerabilities || {};
-                const details = [];
-                for (const [name, vuln] of Object.entries(vulnerabilities)) {
-                  details.push({
-                    name: name,
-                    severity: vuln.severity || 'unknown',
-                    via: Array.isArray(vuln.via) ? vuln.via : [],
-                    range: vuln.range || 'unknown',
-                    fixAvailable: vuln.fixAvailable || false
-                  });
-                }
-                console.log(JSON.stringify(details));
-              } catch(e) {
-                console.log('[]');
-              }
-            ")
-            echo "vulnerability-details<<EOF" >> $GITHUB_OUTPUT
-            echo "$VULN_DETAILS" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
           else
             echo "vulnerability-count=0" >> $GITHUB_OUTPUT
-            echo "vulnerability-details=[]" >> $GITHUB_OUTPUT
           fi
 
       - name: Run Renovate
@@ -90,11 +65,11 @@ jobs:
         run: |
           echo "## 🔨 Build and Test Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           # Check if there are any open Renovate PRs
           PRS=$(gh pr list --label renovate --state open --json number --jq 'length')
           echo "Found $PRS open Renovate PRs" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "$PRS" -gt 0 ]; then
             echo "✅ Renovate has created $PRS PR(s) for dependency updates" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
@@ -142,36 +117,11 @@ jobs:
           npm audit --audit-level=moderate --json > audit-results.json || true
           echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
           if [ -f audit-results.json ]; then
-            # Extract vulnerability count and details safely
+            # Extract vulnerability count safely (simplified)
             VULN_COUNT=$(node -e "try { const audit = require('./audit-results.json'); console.log(audit.metadata?.vulnerabilities?.total || 0); } catch(e) { console.log(0); }")
             echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
-            
-            # Extract detailed vulnerability information (simplified to avoid syntax errors)
-            VULN_DETAILS=$(node -e "
-              try {
-                const audit = require('./audit-results.json');
-                const vulnerabilities = audit.vulnerabilities || {};
-                const details = [];
-                for (const [name, vuln] of Object.entries(vulnerabilities)) {
-                  details.push({
-                    name: name,
-                    severity: vuln.severity || 'unknown',
-                    via: Array.isArray(vuln.via) ? vuln.via : [],
-                    range: vuln.range || 'unknown',
-                    fixAvailable: vuln.fixAvailable || false
-                  });
-                }
-                console.log(JSON.stringify(details));
-              } catch(e) {
-                console.log('[]');
-              }
-            ")
-            echo "vulnerability-details<<EOF" >> $GITHUB_OUTPUT
-            echo "$VULN_DETAILS" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
           else
             echo "vulnerability-count=0" >> $GITHUB_OUTPUT
-            echo "vulnerability-details=[]" >> $GITHUB_OUTPUT
           fi
 
       - name: Check for security PRs and vulnerabilities
@@ -200,19 +150,13 @@ jobs:
               pr.labels.some(label => label.name === 'renovate')
             );
 
-            // Parse npm audit results
+            // Parse npm audit results (simplified to avoid syntax errors)
             let auditVulnerabilities = 0;
-            let vulnerabilityDetails = [];
             try {
               const vulnCount = `${{ steps.audit.outputs.vulnerability-count }}`;
               auditVulnerabilities = parseInt(vulnCount) || 0;
-              
-              const vulnDetailsStr = `${{ steps.audit.outputs.vulnerability-details }}`;
-              if (vulnDetailsStr && vulnDetailsStr !== '[]') {
-                vulnerabilityDetails = JSON.parse(vulnDetailsStr);
-              }
             } catch (e) {
-              console.log('Could not parse vulnerability data:', e.message);
+              console.log('Could not parse vulnerability count:', e.message);
             }
 
             core.setOutput('security_count', securityPRs.length);
@@ -235,26 +179,14 @@ jobs:
             report += `| 📦 Total Updates | ${allRenovatePRs.length} | ${allRenovatePRs.length > 0 ? '📋 Review Required' : '✅ All Current'} |\n`;
             report += `| 🚨 NPM Vulnerabilities | ${auditVulnerabilities} | ${auditVulnerabilities > 0 ? '🚨 CRITICAL' : '✅ Secure'} |\n\n`;
 
-            // Add detailed vulnerability table
-            if (auditVulnerabilities > 0 && vulnerabilityDetails.length > 0) {
-              report += `## 🚨 Detailed Vulnerability Analysis\n\n`;
-              report += `### 📋 Vulnerability Summary\n\n`;
-              report += `| Package | Severity | Affected Versions | Fix Available | CVE IDs |\n`;
-              report += `|---------|----------|-------------------|---------------|----------|\n`;
-              
-              vulnerabilityDetails.forEach(vuln => {
-                const severity = vuln.severity || 'unknown';
-                const severityEmoji = severity === 'critical' ? '🔴' : 
-                                     severity === 'high' ? '🟠' : 
-                                     severity === 'moderate' ? '🟡' : 
-                                     severity === 'low' ? '🟢' : '⚪';
-                
-                const cveIds = vuln.via.map(v => typeof v === 'string' ? v : v.id || 'N/A').join(', ');
-                const fixAvailable = vuln.fixAvailable ? '✅ Yes' : '❌ No';
-                
-                report += `| \`${vuln.name}\` | ${severityEmoji} ${severity.toUpperCase()} | \`${vuln.range}\` | ${fixAvailable} | ${cveIds || 'N/A'} |\n`;
-              });
-              report += `\n`;
+            // Add basic vulnerability information
+            if (auditVulnerabilities > 0) {
+              report += `## 🚨 Security Vulnerabilities Detected\n\n`;
+              report += `**Total Vulnerabilities:** ${auditVulnerabilities}\n\n`;
+              report += `### 📋 Recommended Actions\n`;
+              report += `1. **Run \`npm audit fix\`** to automatically fix vulnerabilities\n`;
+              report += `2. **Review the audit output** for detailed information\n`;
+              report += `3. **Test thoroughly** after applying fixes\n\n`;
             }
 
             if (securityPRs.length > 0) {
