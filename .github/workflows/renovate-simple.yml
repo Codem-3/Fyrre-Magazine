@@ -127,7 +127,7 @@ jobs:
             // Parse npm audit results (simplified to avoid syntax errors)
             let auditVulnerabilities = 0;
             try {
-              const vulnCount = `${{ steps.audit.outputs.vulnerability-count }}`;
+              const vulnCount = '${{ steps.audit.outputs.vulnerability-count }}';
               auditVulnerabilities = parseInt(vulnCount) || 0;
             } catch (e) {
               console.log('Could not parse vulnerability count:', e.message);
@@ -236,7 +236,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const report = `${{ steps.security-check.outputs.report }}`;
+            const report = '${{ steps.security-check.outputs.report }}';
             const title = `🔒 Weekly Security & Dependency Report - ${new Date().toLocaleDateString()}`;
 
             // Check if there's an open report issue from this week
