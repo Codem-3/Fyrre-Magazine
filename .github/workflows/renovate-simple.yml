@@ -4,11 +4,18 @@ on:
   schedule:
     - cron: "0 6 * * 0" # Runs every Sunday at 6 AM UTC
   workflow_dispatch:
-
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
+    inputs:
+      target_branch:
+        description: "Target branch to scan"
+        required: false
+        default: "develop/2.3"
+        type: choice
+        options:
+          - develop/2.3
+          - develop/2.2
+          - main
+          - develop/2.1
+          - develop/2.0
 
 jobs:
   renovate:
@@ -30,7 +37,7 @@ jobs:
         run: npm audit --json > audit-before.json || true
 
       - name: Run Renovate
-        uses: renovatebot/github-action@v39
+        uses: renovatebot/github-action@v43.0.18
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
