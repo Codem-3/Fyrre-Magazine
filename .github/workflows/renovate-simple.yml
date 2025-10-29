@@ -1,22 +1,18 @@
-name: Renovate Setup
+name: Renovate Bot
 
 on:
-  # Run every Sunday at 6am UTC
   schedule:
-    - cron: "0 6 * * 0"
-
-  # Allow manual trigger
+    - cron: "0 6 * * 0" # Runs every Sunday at 6 AM UTC
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
 
 jobs:
   renovate:
-    name: Run Renovate Bot
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      checks: write
 
     steps:
       - name: Checkout repository
@@ -25,281 +21,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: "npm"
+          node-version: 20
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run npm audit
-        id: audit
-        run: |
-          npm audit --audit-level=moderate --json > audit-results.json || true
-          echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
-          if [ -f audit-results.json ]; then
-            # Extract vulnerability count using jq instead of node to avoid syntax errors
-            VULN_COUNT=$(jq -r '.metadata.vulnerabilities.total // 0' audit-results.json 2>/dev/null || echo "0")
-            echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
-          else
-            echo "vulnerability-count=0" >> $GITHUB_OUTPUT
-          fi
+      - name: Run audit before update
+        run: npm audit --json > audit-before.json || true
 
       - name: Run Renovate
-        uses: renovatebot/github-action@v43.0.18
+        uses: renovatebot/github-action@v39
         with:
-          configurationFile: renovate.json
-          token: ${{ secrets.RENOVATE_TOKEN || secrets.GITHUB_TOKEN }}
-        env:
-          LOG_LEVEL: info
-          RENOVATE_REPOSITORIES: ${{ github.repository }}
-          RENOVATE_VULNERABILITY_ALERTS: true
-          RENOVATE_OSV_VULNERABILITY_ALERTS: true
-          RENOVATE_PR_CREATION: immediate
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Summary
+      - name: Run audit after update
+        run: npm audit --json > audit-after.json || true
+
+      - name: Compare audits and create issue
         if: always()
         run: |
-          echo "Renovate has completed its run" >> $GITHUB_STEP_SUMMARY
-          echo "Check [Pull Requests](https://github.com/${{ github.repository }}/pulls?q=is%3Apr+is%3Aopen+label%3Arenovate) for updates" >> $GITHUB_STEP_SUMMARY
-
-  security-notification:
-    name: Security Vulnerability Report
-    needs: renovate
-    if: always()
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
-      issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run npm audit
-        id: audit
-        run: |
-          npm audit --audit-level=moderate --json > audit-results.json || true
-          echo "audit-exit-code=$?" >> $GITHUB_OUTPUT
-          if [ -f audit-results.json ]; then
-            # Extract vulnerability count using jq instead of node to avoid syntax errors
-            VULN_COUNT=$(jq -r '.metadata.vulnerabilities.total // 0' audit-results.json 2>/dev/null || echo "0")
-            echo "vulnerability-count=$VULN_COUNT" >> $GITHUB_OUTPUT
-          else
-            echo "vulnerability-count=0" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Check for security PRs and vulnerabilities
-        id: security-check
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { data: prs } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              per_page: 100
-            });
-
-            const securityPRs = prs.filter(pr =>
-              pr.labels.some(label => label.name === 'security') &&
-              pr.labels.some(label => label.name === 'renovate')
-            );
-
-            const allRenovatePRs = prs.filter(pr =>
-              pr.labels.some(label => label.name === 'renovate')
-            );
-
-            const majorUpdatePRs = prs.filter(pr =>
-              pr.labels.some(label => label.name === 'major-update') &&
-              pr.labels.some(label => label.name === 'renovate')
-            );
-
-            // Parse npm audit results (simplified to avoid syntax errors)
-            let auditVulnerabilities = 0;
-            try {
-              const vulnCount = `${{ steps.audit.outputs.vulnerability-count }}`;
-              auditVulnerabilities = parseInt(vulnCount) || 0;
-            } catch (e) {
-              console.log('Could not parse vulnerability count:', e.message);
-            }
-
-            core.setOutput('security_count', securityPRs.length);
-            core.setOutput('total_count', allRenovatePRs.length);
-            core.setOutput('major_count', majorUpdatePRs.length);
-            core.setOutput('has_security', securityPRs.length > 0);
-            core.setOutput('audit_vulnerabilities', auditVulnerabilities);
-
-            // Create detailed report
-            let report = `# 📊 Weekly Security & Dependency Report\n\n`;
-            report += `**📅 Date:** ${new Date().toLocaleDateString()}\n`;
-            report += `**🏢 Repository:** ${context.repo.owner}/${context.repo.repo}\n`;
-            report += `**⏰ Generated:** ${new Date().toLocaleString()}\n\n`;
-
-            report += `## 📈 Executive Summary\n\n`;
-            report += `| Metric | Count | Status |\n`;
-            report += `|--------|-------|--------|\n`;
-            report += `| 🔒 Security Updates | ${securityPRs.length} | ${securityPRs.length > 0 ? '⚠️ Action Required' : '✅ Up to Date'} |\n`;
-            report += `| ⚠️ Major Updates | ${majorUpdatePRs.length} | ${majorUpdatePRs.length > 0 ? '🔍 Review Needed' : '✅ No Breaking Changes'} |\n`;
-            report += `| 📦 Total Updates | ${allRenovatePRs.length} | ${allRenovatePRs.length > 0 ? '📋 Review Required' : '✅ All Current'} |\n`;
-            report += `| 🚨 NPM Vulnerabilities | ${auditVulnerabilities} | ${auditVulnerabilities > 0 ? '🚨 CRITICAL' : '✅ Secure'} |\n\n`;
-
-            // Add basic vulnerability information
-            if (auditVulnerabilities > 0) {
-              report += `## 🚨 Security Vulnerabilities Detected\n\n`;
-              report += `**Total Vulnerabilities:** ${auditVulnerabilities}\n\n`;
-              report += `### 📋 Recommended Actions\n`;
-              report += `1. **Run \`npm audit fix\`** to automatically fix vulnerabilities\n`;
-              report += `2. **Review the audit output** for detailed information\n`;
-              report += `3. **Test thoroughly** after applying fixes\n\n`;
-            }
-
-            if (securityPRs.length > 0) {
-              report += `## 🔒 Security PRs Created by Renovate\n\n`;
-              report += `The following PRs address security vulnerabilities:\n\n`;
-              securityPRs.forEach(pr => {
-                report += `### [${pr.title}](${pr.html_url})\n`;
-                report += `- **Status:** ${pr.mergeable_state || 'unknown'}\n`;
-                report += `- **Created:** ${new Date(pr.created_at).toLocaleDateString()}\n`;
-                report += `- **Branch:** \`${pr.head.ref}\` → \`${pr.base.ref}\`\n\n`;
-              });
-            }
-
-            if (majorUpdatePRs.length > 0) {
-              report += `## ⚠️  Major Version Updates\n\n`;
-              report += `These updates may contain breaking changes:\n\n`;
-              majorUpdatePRs.forEach(pr => {
-                report += `- [${pr.title}](${pr.html_url})\n`;
-              });
-              report += `\n`;
-            }
-
-            if (allRenovatePRs.length === 0) {
-              report += `## ✅ All Up to Date\n\n`;
-              report += `No dependency updates needed. All packages are up to date!\n\n`;
-            }
-
-            report += `## 📋 Recommended Actions\n\n`;
-
-            if (auditVulnerabilities > 0) {
-              report += `### 🚨 Immediate Security Actions\n`;
-              report += `1. **Run \`npm audit fix\`** to automatically fix vulnerabilities where possible\n`;
-              report += `2. **Review critical vulnerabilities** in the table above\n`;
-              report += `3. **Update packages manually** if automatic fixes are not available\n`;
-              report += `4. **Test thoroughly** after applying fixes\n\n`;
-            }
-
-            if (securityPRs.length > 0) {
-              report += `### 🔒 Security PR Management\n`;
-              report += `1. **Review security PRs** created by Renovate\n`;
-              report += `2. **Merge approved PRs** after testing\n`;
-              report += `3. **Monitor for new vulnerabilities** weekly\n\n`;
-            }
-
-            if (majorUpdatePRs.length > 0) {
-              report += `### ⚠️ Major Update Review\n`;
-              report += `1. **Review breaking changes** in major updates\n`;
-              report += `2. **Test thoroughly** before merging\n`;
-              report += `3. **Update documentation** if needed\n\n`;
-            }
-
-            if (allRenovatePRs.length > 0) {
-              report += `### 📦 General Maintenance\n`;
-              report += `1. **Review all Renovate PRs** for compatibility\n`;
-              report += `2. **Run automated tests** before merging\n`;
-              report += `3. **Monitor build status** and CI/CD pipelines\n\n`;
-            }
-
-            report += `## 🔔 Notification Settings\n\n`;
-            report += `To receive notifications for future reports:\n`;
-            report += `- **Watch this repository** (Settings → Notifications → Custom → Issues)\n`;
-            report += `- **Subscribe to \`renovate-report\` label** for automated reports\n`;
-            report += `- **Enable email notifications** for security alerts\n\n`;
-            report += `---\n`;
-            report += `*This report was automatically generated by the Renovate Security Workflow*\n`;
-            report += `*Next scheduled run: Every Sunday at 6:00 AM (Europe/Berlin time)*`;
-
-            core.setOutput('report', report);
-            return report;
-
-      - name: Create or update security report issue
-        if: steps.security-check.outputs.has_security == 'true' || steps.security-check.outputs.total_count > 0
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const report = `${{ steps.security-check.outputs.report }}`;
-            const title = `🔒 Weekly Security & Dependency Report - ${new Date().toLocaleDateString()}`;
-
-            // Check if there's an open report issue from this week
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: 'renovate-report',
-              state: 'open',
-              per_page: 5
-            });
-
-            const weekAgo = new Date();
-            weekAgo.setDate(weekAgo.getDate() - 7);
-
-            const recentIssue = issues.find(issue =>
-              new Date(issue.created_at) > weekAgo
-            );
-
-            if (recentIssue) {
-              // Update existing issue
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: recentIssue.number,
-                body: report
-              });
-
-              // Add comment about update
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: recentIssue.number,
-                body: `🔄 Report updated at ${new Date().toLocaleString()}`
-              });
-
-              console.log(`Updated issue #${recentIssue.number}`);
-            } else {
-              // Create new issue
-              const { data: issue } = await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: title,
-                body: report,
-                labels: ['renovate-report', 'dependencies']
-              });
-
-              console.log(`Created issue #${issue.number}`);
-            }
-
-      - name: Post summary
-        if: always()
-        run: |
-          if [ "${{ steps.security-check.outputs.has_security }}" = "true" ] || [ "${{ steps.security-check.outputs.audit_vulnerabilities }}" -gt 0 ]; then
-            echo "⚠️  **VULNERABILITIES FOUND!**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Number of vulnerabilities:** ${{ steps.security-check.outputs.audit_vulnerabilities }}" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "A detailed report has been created as an issue." >> $GITHUB_STEP_SUMMARY
-            echo "Team members watching this repository will receive email notifications." >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**To fix vulnerabilities:**" >> $GITHUB_STEP_SUMMARY
-            echo "1. Run \`npm audit fix\` locally" >> $GITHUB_STEP_SUMMARY
-            echo "2. Review and merge any security PRs created by Renovate" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "✅ No vulnerabilities found" >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "🧾 Comparing npm audits before and after updates..."
+          npx audit-diff audit-before.json audit-after.json --markdown > audit-report.md || true
+          gh issue create --title "🛡️ Renovate Audit Report $(date +'%Y-%m-%d')" \
+            --body-file audit-report.md \
+            --label "security" || true

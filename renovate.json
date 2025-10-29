@@ -1,15 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate configuration for Fyrre ViteJS project",
+  "description": "Renovate configuration for Fyrre Magazine",
   "extends": [
     "config:recommended",
     ":enableVulnerabilityAlertsWithLabel(security)"
   ],
   "timezone": "Europe/Berlin",
-  "schedule": [],
-  "baseBranches": [
-    "master"
-  ],
   "enabledManagers": [
     "npm"
   ],
@@ -18,9 +14,6 @@
   "commitMessagePrefix": "chore(deps):",
   "commitMessageAction": "update",
   "commitMessageTopic": "{{depName}}",
-  "prCreation": "immediate",
-  "prConcurrentLimit": 100,
-  "prHourlyLimit": 14,
   "branchPrefix": "renovate/",
   "labels": [
     "dependencies",
@@ -29,70 +22,57 @@
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
   "platformAutomerge": false,
-  "requiredStatusChecks": [],
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "labels": [
-      "security",
-      "priority-high"
-    ],
-    "schedule": "at any time",
-    "assignees": [],
-    "reviewers": []
-  },
+  "prCreation": "immediate",
+  "prConcurrentLimit": 20,
+  "prHourlyLimit": 10,
+  "requiredStatusChecks": [
+    "quick-check",
+    "build-check"
+  ],
   "packageRules": [
     {
-      "description": "Group ALL dependencies into a single PR (including major updates)",
-      "groupName": "All Dependencies",
+      "description": "Group all minor and patch updates together",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "All minor and patch updates",
+      "automerge": true
+    },
+    {
+      "description": "Separate PR for major updates",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "Major updates",
+      "automerge": false
+    },
+    {
+      "description": "Security updates handled separately",
       "matchPackagePatterns": [
         ".*"
       ],
-      "matchUpdateTypes": [
-        "patch",
-        "minor",
-        "major"
+      "labels": [
+        "security"
       ],
-      "automerge": false,
-      "requiredStatusChecks": []
-    },
-    {
-      "description": "Pin Node.js version",
-      "matchPackageNames": [
-        "node"
-      ],
-      "enabled": false
-    },
-    {
-      "description": "Ignore passport-saml critical vulnerability for now (separate ticket)",
-      "matchPackageNames": [
-        "passport-saml"
-      ],
-      "enabled": false
+      "groupName": "Security updates",
+      "automerge": false
     }
   ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ],
+    "schedule": "at any time"
+  },
   "lockFileMaintenance": {
-    "enabled": false
+    "enabled": true,
+    "schedule": [
+      "before 6am on Sunday"
+    ]
   },
-  "prBodyDefinitions": {
-    "Notes": "⚠️ This PR was automatically created by Renovate Bot"
-  },
-  "prBodyColumns": [
-    "Package",
-    "Change",
-    "Age",
-    "Adoption",
-    "Passing",
-    "Confidence"
-  ],
-  "prBodyNotes": [
-    "Automated tests will run to verify these changes",
-    "Please review the changes carefully before merging",
-    "This PR runs weekly on Sundays at 6am (Europe/Berlin time)"
-  ],
   "postUpdateOptions": [
     "npmDedupe"
-  ],
-  "ignoreDeps": [],
-  "ignorePresets": [],
-  "osvVulnerabilityAlerts": true
+  ]
 }
