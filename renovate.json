@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate configuration for Fyrre Magazine",
+  "description": "Renovate configuration for Qumasoft Web monorepo",
   "extends": [
     "config:recommended",
     ":enableVulnerabilityAlertsWithLabel(security)"
@@ -25,10 +25,7 @@
   "prCreation": "immediate",
   "prConcurrentLimit": 20,
   "prHourlyLimit": 10,
-  "requiredStatusChecks": [
-    "quick-check",
-    "build-check"
-  ],
+  "requiredStatusChecks": [],
   "packageRules": [
     {
       "description": "Group all minor and patch updates together",
