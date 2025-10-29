@@ -16,6 +16,7 @@ on:
           - main
           - develop/2.1
           - develop/2.0
+          - master
 
 jobs:
   renovate:
