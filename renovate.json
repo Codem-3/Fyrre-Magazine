@@ -6,55 +6,98 @@
     ":enableVulnerabilityAlertsWithLabel(security)"
   ],
   "timezone": "Europe/Berlin",
-  "enabledManagers": ["npm"],
+  "enabledManagers": [
+    "npm"
+  ],
   "rangeStrategy": "bump",
   "semanticCommits": "enabled",
   "commitMessagePrefix": "chore(deps):",
   "commitMessageAction": "update",
   "commitMessageTopic": "{{depName}}",
   "branchPrefix": "renovate/",
-  "labels": ["dependencies", "renovate"],
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
-  "reviewers": ["Codem-3"],
+  "reviewers": [
+    "Codem-3"
+  ],
   "platformAutomerge": false,
   "prCreation": "immediate",
   "prConcurrentLimit": 50,
   "prHourlyLimit": 0,
-  "requiredStatusChecks": ["quick-check", "build-check"],
+  "requiredStatusChecks": [
+    "quick-check",
+    "build-check"
+  ],
   "packageRules": [
     {
       "description": "Group all non-major dependencies (minor and patch updates) together",
       "matchPackagePatterns": [
         "*"
       ],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "automerge": true
+      "automerge": true,
+      "reviewers": [
+        "Codem-3"
+      ]
     },
     {
       "description": "Group all major updates together",
       "matchPackagePatterns": [
         "*"
       ],
-      "matchUpdateTypes": ["major"],
-      "labels": ["dependencies", "renovate", "major-update"],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "labels": [
+        "dependencies",
+        "renovate",
+        "major-update"
+      ],
       "groupName": "Major updates",
       "groupSlug": "all-major",
-      "automerge": false
+      "automerge": false,
+      "reviewers": [
+        "Codem-3"
+      ]
     }
   ],
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["security", "vulnerability-alert"],
+    "labels": [
+      "security",
+      "vulnerability-alert"
+    ],
     "schedule": "at any time",
-    "automerge": false
+    "automerge": false,
+    "reviewers": [
+      "Codem-3"
+    ]
   },
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["before 6am on Sunday"],
-    "labels": ["dependencies", "renovate", "lock-file-maintenance"]
+    "schedule": [
+      "before 6am on Sunday"
+    ],
+    "labels": [
+      "dependencies",
+      "renovate",
+      "lock-file-maintenance"
+    ],
+    "reviewers": [
+      "Codem-3"
+    ]
   },
-  "postUpdateOptions": ["npmDedupe", "npmInstall"]
+  "postUpdateOptions": [
+    "npmDedupe",
+    "npmInstall"
+  ]
 }
