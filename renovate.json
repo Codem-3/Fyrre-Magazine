@@ -1,75 +1,60 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate configuration for Qumasoft Web monorepo",
+  "description": "Renovate configuration. Security updates can be major, minor, or patch - they are handled separately via vulnerabilityAlerts and are not grouped.",
   "extends": [
     "config:recommended",
     ":enableVulnerabilityAlertsWithLabel(security)"
   ],
   "timezone": "Europe/Berlin",
-  "enabledManagers": [
-    "npm"
-  ],
+  "enabledManagers": ["npm"],
   "rangeStrategy": "bump",
   "semanticCommits": "enabled",
   "commitMessagePrefix": "chore(deps):",
   "commitMessageAction": "update",
   "commitMessageTopic": "{{depName}}",
   "branchPrefix": "renovate/",
-  "labels": [
-    "dependencies",
-    "renovate"
-  ],
+  "labels": ["dependencies", "renovate"],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
+  "reviewers": ["Codem-3"],
   "platformAutomerge": false,
   "prCreation": "immediate",
-  "prConcurrentLimit": 20,
-  "prHourlyLimit": 10,
-  "requiredStatusChecks": [],
+  "prConcurrentLimit": 50,
+  "prHourlyLimit": 0,
+  "requiredStatusChecks": ["quick-check", "build-check"],
   "packageRules": [
     {
-      "description": "Group all minor and patch updates together",
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
+      "description": "Group all non-major dependencies (minor and patch updates) together",
+      "matchPackagePatterns": [
+        "*"
       ],
-      "groupName": "All minor and patch updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
       "automerge": true
     },
     {
-      "description": "Separate PR for major updates",
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "groupName": "Major updates",
-      "automerge": false
-    },
-    {
-      "description": "Security updates handled separately",
+      "description": "Group all major updates together",
       "matchPackagePatterns": [
-        ".*"
+        "*"
       ],
-      "labels": [
-        "security"
-      ],
-      "groupName": "Security updates",
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "renovate", "major-update"],
+      "groupName": "Major updates",
+      "groupSlug": "all-major",
       "automerge": false
     }
   ],
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": [
-      "security"
-    ],
-    "schedule": "at any time"
+    "labels": ["security", "vulnerability-alert"],
+    "schedule": "at any time",
+    "automerge": false
   },
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": [
-      "before 6am on Sunday"
-    ]
+    "schedule": ["before 6am on Sunday"],
+    "labels": ["dependencies", "renovate", "lock-file-maintenance"]
   },
-  "postUpdateOptions": [
-    "npmDedupe"
-  ]
+  "postUpdateOptions": ["npmDedupe", "npmInstall"]
 }
