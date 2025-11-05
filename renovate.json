@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Renovate configuration. Security updates can be major, minor, or patch - they are handled separately via vulnerabilityAlerts and are not grouped.",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":enableVulnerabilityAlertsWithLabel(security)"
   ],
   "timezone": "Europe/Berlin",
@@ -44,7 +44,7 @@
       ],
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "automerge": true,
+      "automerge": false,
       "reviewers": [
         "Codem-3"
       ]
@@ -64,7 +64,7 @@
       ],
       "groupName": "Major updates",
       "groupSlug": "all-major",
-      "automerge": true,
+      "automerge": false,
       "reviewers": [
         "Codem-3"
       ]
@@ -77,7 +77,7 @@
       "vulnerability-alert"
     ],
     "schedule": "at any time",
-    "automerge": true,
+    "automerge": false,
     "reviewers": [
       "Codem-3"
     ]
